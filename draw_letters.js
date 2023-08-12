@@ -21,17 +21,6 @@ const boxHeight = 200;
  * from (0,0) to (100, 200)
  */
 function drawLetter(letterData) {
-  // Bounding box constants
-  // color/stroke setup
-  //stroke(strokeColor);
-  //strokeWeight(1);
-  noStroke();
-
-  fill(200, 120, 20, 180);
-  rect(20, 100+20, 60,60,15);
-
-  stroke(180, 100, 60);
-  strokeWeight(3);
   var x1 = letterData["x1"];
   var y1 = letterData["y1"];
   var x2 = letterData["x2"];
@@ -44,25 +33,41 @@ function drawLetter(letterData) {
   var y5 = letterData["y5"];
   var x6 = letterData["x6"];
   var y6 = letterData["y6"];
+  var rectX = letterData["rectX"];
+  var rectY = letterData["rectY"];
+  var rectWidth = letterData["rectWidth"];
+  var rectHeight = letterData["rectHeight"];
+  var rectOffset = letterData["rectOffset"];
+  var lineCount = letterData["rectLines"];
+  
+
+  noStroke();
+
+  fill(200, 120, 20, 180);
+  rect(rectX + rectOffset, rectY + rectOffset, rectWidth,rectHeight,15);
+
+  stroke(180, 100, 60);
+  strokeWeight(3);
+  
 
   line(x1,y1, x2,y2);
   line(x3,y3, x4,y4);
   line(x5,y5, x6,y6);
-  if (letterData["circle"]) {
-    drawRect(letterData["circleX"], letterData["circleY"]);
+  if (lineCount > 0) {
+    drawRect(rectX, rectY, rectWidth, rectHeight, rectOffset, lineCount);
   }
   
 }
 
-function drawRect(x, y) {
+function drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
   //left
-  line(x,y, x,y+5+60+5);
+  line(x, y, x, y + rectOffset * 2 + rectHeight);
   //bottom
-  line(x+10,y+5+60+5, x+10+50,y+5+60+5);
+  if (lineCount > 1) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
   // right
-  line(x+10+50+10,y+5+60+5, x+10+50+10,y);
+  if (lineCount > 2) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
   // top
-  line(x+10+50,y, x+10,y);
+  if (lineCount > 3) line(x + rectWidth, y, x + rectOffset * 2, y);
 }
 
 function interpolate_letter(percent, oldObj, newObj) {
@@ -90,7 +95,7 @@ function interpolate_letter(percent, oldObj, newObj) {
   }
   new_letter["circleX"] = map(percent, 0, 100, oldObj["circleX"], newObj["circleX"]);
   new_letter["circleY"] = map(percent, 0, 100, oldObj["circleY"], newObj["circleY"]);
-  
+
   return new_letter;
 }
 

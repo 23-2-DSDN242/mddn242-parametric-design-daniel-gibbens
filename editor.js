@@ -5,9 +5,21 @@
  * ["object_field", minimum_bound, maximum_bound]
  */
 const sliderInfo = [
-  ["size",       0, 100],
-  ["offsetx",  -30,  30],
-  ["offsety", -100, 100]
+  ["x1", 0, 100],
+  ["y1", 0, 100],
+  ["x2", 0, 100],
+  ["y2", 0, 100],
+  ["x3", 0, 100],
+  ["y3", 0, 100],
+  ["x4", 0, 100],
+  ["y4", 0, 100],
+  ["x5", 0, 100],
+  ["y5", 0, 100],
+  ["x6", 0, 100],
+  ["y6", 0, 100],
+  ["circle", 0, 1],
+  ["circleX", 0, 100],
+  ["circleY", 0, 200]
 ];
 
 // PROBABLY DON'T NEED TO EDIT ANYTHING ELSE. STOP HERE.
@@ -68,6 +80,7 @@ function buttonPressedEvent() {
   let obj = sliderToDataObject();
   json = JSON.stringify(obj, null, 2);
   alert(json);
+  console.log(json);
 }
 
 function draw () {

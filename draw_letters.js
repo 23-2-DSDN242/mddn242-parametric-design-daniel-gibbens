@@ -8,11 +8,6 @@ const darkBlue  = "#0077b6";
 const lightBlue  = "#90e0ef";
 const strokeColor  = "#03045e";
 
-
-/* bounding box constants */
-const boxWidth = 100;
-const boxHeight = 200;
-
 /*
  * Draw the letter given the letterData
  *

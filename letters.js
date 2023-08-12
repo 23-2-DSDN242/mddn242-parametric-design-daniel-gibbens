@@ -12,9 +12,12 @@ const alphabet = {
     "y5": 0,
     "x6": 0,
     "y6": 0,
-    "circle": true,
-    "circleX": 15,
-    "circleY": 115
+    "rectLines": 4,
+    "rectX": 15,
+    "rectY": 115,
+    "rectWidth": 60,
+    "rectHeight": 60,
+    "rectOffset": 5
   },
   "A": {
     "x1": 95,
@@ -29,9 +32,12 @@ const alphabet = {
     "y5": 0,
     "x6": 0,
     "y6": 0,
-    "circle": true,
-    "circleX": 15,
-    "circleY": 115,
+    "rectLines": 4,
+    "rectX": 15,
+    "rectY": 115,
+    "rectWidth": 60,
+    "rectHeight": 60,
+    "rectOffset": 5
   },
   "B": {
     "x1": 15,
@@ -46,9 +52,12 @@ const alphabet = {
     "y5": 0,
     "x6": 0,
     "y6": 0,
-    "circle": true,
-    "circleX": 15,
-    "circleY": 115
+    "rectLines": 4,
+    "rectX": 15,
+    "rectY": 115,
+    "rectWidth": 60,
+    "rectHeight": 60,
+    "rectOffset": 5
   },
   "C": {
     "x1": 15,
@@ -63,9 +72,12 @@ const alphabet = {
     "y5": 115,
     "x6": 25,
     "y6": 115,
-    "circle": false,
-    "circleX": 0,
-    "circleY": 0
+    "rectLines": 0,
+    "rectX": 15,
+    "rectY": 115,
+    "rectWidth": 60,
+    "rectHeight": 60,
+    "rectOffset": 5
   },
   "D": {
     "x1": 85,
@@ -80,9 +92,51 @@ const alphabet = {
     "y5": 0,
     "x6": 0,
     "y6": 0,
-    "circle": true,
-    "circleX": 15,
-    "circleY": 115
-  }
-  
+    "rectLines": 4,
+    "rectX": 15,
+    "rectY": 115,
+    "rectWidth": 60,
+    "rectHeight": 60,
+    "rectOffset": 5
+  },
+  "E": {
+    "x1": 15,
+    "y1": 165,
+    "x2": 15,
+    "y2": 185,
+    "x3": 15,
+    "y3": 185,
+    "x4": 85,
+    "y4": 185,
+    "x5": 0,
+    "y5": 0,
+    "x6": 0,
+    "y6": 0,
+    "rectLines": 4,
+    "rectX": 15,
+    "rectY": 115,
+    "rectWidth": 60,
+    "rectHeight": 35,
+    "rectOffset": 5
+  },
+  "F": {
+    "x1": 35,
+    "y1": 25,
+    "x2": 85,
+    "y2": 25,
+    "x3": 5,
+    "y3": 85,
+    "x4": 15,
+    "y4": 85,
+    "x5": 25,
+    "y5": 95,
+    "x6": 25,
+    "y6": 185,
+    "rectLines": 2,
+    "rectX": 25,
+    "rectY": 25,
+    "rectWidth": 60,
+    "rectHeight": 50,
+    "rectOffset": 5
+  },
 }

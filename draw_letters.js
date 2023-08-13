@@ -55,14 +55,15 @@ function drawLetter(letterData) {
 }
 
 function drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
+  // Add param for order
   //left
   line(x, y, x, y + rectOffset * 2 + rectHeight);
   //bottom
-  if (lineCount > 1) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
+  if (lineCount > 3) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
   // right
   if (lineCount > 2) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
   // top
-  if (lineCount > 3) line(x + rectWidth, y, x + rectOffset * 2, y);
+  if (lineCount > 1) line(x + rectWidth, y, x + rectOffset * 2, y);
 }
 
 function interpolate_letter(percent, oldObj, newObj) {

@@ -34,6 +34,7 @@ function drawLetter(letterData) {
   var rectHeight = letterData["rectHeight"];
   var rectOffset = letterData["rectOffset"];
   var lineCount = letterData["rectLines"];
+  var lineOrder = letterData["rectOrder"];
   
 
   noStroke();
@@ -49,13 +50,21 @@ function drawLetter(letterData) {
   line(x3,y3, x4,y4);
   line(x5,y5, x6,y6);
   if (lineCount > 0) {
-    drawRect(rectX, rectY, rectWidth, rectHeight, rectOffset, lineCount);
+    drawRect(rectX, rectY, rectWidth, rectHeight, rectOffset, lineCount, lineOrder);
   }
   
 }
 
-function drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
+function drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lineOrder) {
   // Add param for order
+  if (lineOrder === "Clockwise") {
+    drawLinesClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount);
+  } else {
+    drawLinesCounterClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount);
+  }
+}
+
+function drawLinesClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
   //left
   line(x, y, x, y + rectOffset * 2 + rectHeight);
   //bottom
@@ -64,6 +73,17 @@ function drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
   if (lineCount > 2) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
   // top
   if (lineCount > 1) line(x + rectWidth, y, x + rectOffset * 2, y);
+}
+
+function drawLinesCounterClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
+  //top
+  line(x + rectWidth, y, x + rectOffset * 2, y);
+  //right
+  if (lineCount > 1) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
+  //bottom
+  if (lineCount > 2) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
+  //left
+  if (lineCount > 3) line(x, y, x, y + rectOffset * 2 + rectHeight);
 }
 
 function interpolate_letter(percent, oldObj, newObj) {

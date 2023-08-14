@@ -104,13 +104,17 @@ function interpolate_letter(percent, oldObj, newObj) {
 
   // Handle later to
   // circle lines appear from behind square, return behind square
-  if (percent < 46) {
-    new_letter["rectLines"] = oldObj["rectLines"];
-  } else {
-    new_letter["rectLines"] = newObj["rectLines"];
-  }
   new_letter["rectX"] = map(percent, 0, 100, oldObj["rectX"], newObj["rectX"]);
   new_letter["rectY"] = map(percent, 0, 100, oldObj["rectY"], newObj["rectY"]);
+  new_letter["rectWidth"] = map(percent, 0, 100, oldObj["rectWidth"], newObj["rectWidth"]);
+  new_letter["rectHeight"] = map(percent, 0, 100, oldObj["rectHeight"], newObj["rectHeight"]);
+
+
+  new_letter["rectLines"] = map(percent, 0, 100, oldObj["rectLines"], newObj["rectLines"]);
+  new_letter["rectOffset"] = map(percent, 0, 100, oldObj["rectOffset"], newObj["rectOffset"]);
+
+  // Need to handle for 3
+  new_letter["rectOrder"] = "Clockwise"
 
   return new_letter;
 }

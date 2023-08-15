@@ -17,9 +17,13 @@ const sliderInfo = [
   ["y5", 0, 100],
   ["x6", 0, 100],
   ["y6", 0, 100],
-  ["circle", 0, 1],
-  ["circleX", 0, 100],
-  ["circleY", 0, 200]
+  ["rectLines", 0, 4],
+  ["rectX", 15, 0, 100],
+  ["rectY", 115, 0, 100],
+  ["rectWidth", 0, 100],
+  ["rectHeight", 0, 100],
+  ["rectOffset", 0, 10],
+  ["rectOrder", 0, 1]
 ];
 
 // PROBABLY DON'T NEED TO EDIT ANYTHING ELSE. STOP HERE.

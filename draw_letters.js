@@ -1,12 +1,12 @@
 /* these are optional special variables which will change the system */
-var systemBackgroundColor = "#caf0f8";
-var systemLineColor = "#000090";
+var systemBackgroundColor = "#F1CE76";
+var systemLineColor = "#4F8CC2";
 var systemBoxColor = "#00c800";
 
 /* internal constants */
-const darkBlue  = "#0077b6";
-const lightBlue  = "#90e0ef";
-const strokeColor  = "#03045e";
+const rectColor  = "#2A9D8F";
+const strokeColor  = "#264653";
+const backgroundRectColor = "#E29250";
 
 /*
  * Draw the letter given the letterData
@@ -36,9 +36,26 @@ function drawLetter(letterData) {
   var rectOffset = letterData["rectOffset"];
   var lineCount = letterData["rectLines"];
 
+  // Extra effects
+  noStroke();
+  fill(backgroundRectColor);
+  rect(0, -95, 100, 5, 2);
+  rect(0, -80, 100, 10, 3);
+  rect(0, -60, 100, 20, 5);
+  rect(0, -30, 100, 40, 8);
+  rect(0, 20, 100,200, 15);
+  rect(0, 230, 100, 40, 8);
+  rect(0, 280, 100, 20, 5);
+  rect(0, 310, 100, 10, 3);
+  rect(0, 330, 100, 5, 2);
+
+  // Draw the filled in rectangle
+  fill(rectColor);
+  rect(rectX + rectOffset, rectY + rectOffset, rectWidth,rectHeight,15);
+
   // Draw all non-rectangle lines
-  stroke(180, 100, 60);
-  strokeWeight(3);
+  stroke(strokeColor);
+  strokeWeight(6);
   
   line(x1,y1, x2,y2);
   line(x3,y3, x4,y4);
@@ -49,11 +66,6 @@ function drawLetter(letterData) {
   if (lineCount > 0) {
     letterData["draw"]();
   }
-  
-  // Draw the filled in rectangle
-  noStroke();
-  fill(200, 120, 20, 180);
-  rect(rectX + rectOffset, rectY + rectOffset, rectWidth,rectHeight,15);
 }
 
 // Helper function for selecting correct rotation

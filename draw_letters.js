@@ -16,6 +16,7 @@ const strokeColor  = "#03045e";
  * from (0,0) to (100, 200)
  */
 function drawLetter(letterData) {
+  // Get letterData
   var x1 = letterData["x1"];
   var y1 = letterData["y1"];
   var x2 = letterData["x2"];
@@ -34,29 +35,29 @@ function drawLetter(letterData) {
   var rectHeight = letterData["rectHeight"];
   var rectOffset = letterData["rectOffset"];
   var lineCount = letterData["rectLines"];
-  var lineOrder = letterData["rectOrder"];
-  
 
-  noStroke();
-
-  fill(200, 120, 20, 180);
-  rect(rectX + rectOffset, rectY + rectOffset, rectWidth,rectHeight,15);
-
+  // Draw all non-rectangle lines
   stroke(180, 100, 60);
   strokeWeight(3);
   
-
   line(x1,y1, x2,y2);
   line(x3,y3, x4,y4);
   line(x5,y5, x6,y6);
+
+  // Call the letters rectangle method
+  // Note: this will be the same until interpolating
   if (lineCount > 0) {
-    drawRect(rectX, rectY, rectWidth, rectHeight, rectOffset, lineCount, lineOrder);
+    letterData["draw"]();
   }
   
+  // Draw the filled in rectangle
+  noStroke();
+  fill(200, 120, 20, 180);
+  rect(rectX + rectOffset, rectY + rectOffset, rectWidth,rectHeight,15);
 }
 
+// Helper function for selecting correct rotation
 function drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lineOrder) {
-  // Add param for order
   if (lineOrder === "Clockwise") {
     drawLinesClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount);
   } else {
@@ -64,31 +65,34 @@ function drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lineOrder)
   }
 }
 
+// Draws the lines around the rectangle in a clockwise fashion
 function drawLinesClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
-  //left
+  // Left
   line(x, y, x, y + rectOffset * 2 + rectHeight);
-  //bottom
+  // Bottom
   if (lineCount > 3) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
-  // right
+  // Right
   if (lineCount > 2) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
-  // top
+  // Top
   if (lineCount > 1) line(x + rectWidth, y, x + rectOffset * 2, y);
 }
 
+// Draws the lines around the rectangle in a counterclockwise fashion
 function drawLinesCounterClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
-  //top
+  // Top
   line(x + rectWidth, y, x + rectOffset * 2, y);
-  //right
+  // Right
   if (lineCount > 1) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
-  //bottom
+  // Bottom
   if (lineCount > 2) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
-  //left
+  // Left
   if (lineCount > 3) line(x, y, x, y + rectOffset * 2 + rectHeight);
 }
 
 function interpolate_letter(percent, oldObj, newObj) {
   let new_letter = {};
 
+  // Line coords
   new_letter["x1"] = map(percent, 0, 100, oldObj["x1"], newObj["x1"]);
   new_letter["y1"] = map(percent, 0, 100, oldObj["y1"], newObj["y1"]);
   new_letter["x2"] = map(percent, 0, 100, oldObj["x2"], newObj["x2"]);
@@ -102,21 +106,48 @@ function interpolate_letter(percent, oldObj, newObj) {
   new_letter["x6"] = map(percent, 0, 100, oldObj["x6"], newObj["x6"]);
   new_letter["y6"] = map(percent, 0, 100, oldObj["y6"], newObj["y6"]);
 
-  // Handle later to
-  // circle lines appear from behind square, return behind square
+  // Rectangle data
   new_letter["rectX"] = map(percent, 0, 100, oldObj["rectX"], newObj["rectX"]);
   new_letter["rectY"] = map(percent, 0, 100, oldObj["rectY"], newObj["rectY"]);
   new_letter["rectWidth"] = map(percent, 0, 100, oldObj["rectWidth"], newObj["rectWidth"]);
   new_letter["rectHeight"] = map(percent, 0, 100, oldObj["rectHeight"], newObj["rectHeight"]);
-
-
-  new_letter["rectLines"] = map(percent, 0, 100, oldObj["rectLines"], newObj["rectLines"]);
   new_letter["rectOffset"] = map(percent, 0, 100, oldObj["rectOffset"], newObj["rectOffset"]);
 
-  // Need to handle for 3
-  new_letter["rectOrder"] = "Clockwise"
+  // Enable smooth transition of different line count and rotation by changing when rectangle lines are not displayed
+  if (percent < 50) {
+    new_letter["rectLines"] = oldObj["rectLines"];
+    new_letter["rectOrder"] = oldObj["rectOrder"];
+  } else {
+    new_letter["rectLines"] = newObj["rectLines"];
+    new_letter["rectOrder"] = newObj["rectOrder"];
+  }
+  
+  // Only update the draw method when interpolating
+  if (percent != 0 || percent != 100) {
+    new_letter["draw"] = () => interpolateRect(new_letter["rectX"], new_letter["rectY"], new_letter["rectWidth"], new_letter["rectHeight"], new_letter["rectOffset"], new_letter["rectLines"], new_letter["rectOrder"], percent);
+  }
 
   return new_letter;
+}
+
+// Helper function for mapping rectangle lines to centre of rect and back out again
+function interpolateRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lineOrder, percent) {
+  if (percent < 50) {
+    x = map(percent, 0, 50, x, x + rectOffset + rectWidth/2);
+    y = map(percent, 0, 50, y, y + rectOffset + rectHeight/2);
+    rectWidth = map(percent, 0, 50, rectWidth, 0);
+    rectHeight = map(percent, 0, 50, rectHeight, 0);
+    rectOffset = map(percent, 0, 50, rectOffset, 0);
+    drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lineOrder)
+  } else {
+    x = map(percent, 50, 100, x + rectOffset + rectWidth/2, x);
+    y = map(percent, 50, 100, y + rectOffset + rectHeight/2, y);
+    rectWidth = map(percent, 50, 100, 0, rectWidth);
+    rectHeight = map(percent, 50, 100, 0, rectHeight);
+    rectOffset = map(percent, 50, 100, 0, rectOffset);
+    drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lineOrder)
+  }
+  
 }
 
 var swapWords = [

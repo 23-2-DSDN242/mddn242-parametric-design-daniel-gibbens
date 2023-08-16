@@ -1,12 +1,13 @@
 /* these are optional special variables which will change the system */
 var systemBackgroundColor = "#F1CE76";
-var systemLineColor = "#4F8CC2";
+var systemLineColor = "#264653";
 var systemBoxColor = "#00c800";
 
 /* internal constants */
 const rectColor  = "#2A9D8F";
 const strokeColor  = "#264653";
 const backgroundRectColor = "#E29250";
+const shadow = "#FFF4CE";
 
 /*
  * Draw the letter given the letterData
@@ -39,19 +40,32 @@ function drawLetter(letterData) {
   // Extra effects
   noStroke();
   fill(backgroundRectColor);
+
+  // Extra fading rects
   rect(0, -95, 100, 5, 2);
   rect(0, -80, 100, 10, 3);
   rect(0, -60, 100, 20, 5);
   rect(0, -30, 100, 40, 8);
-  rect(0, 20, 100,200, 15);
   rect(0, 230, 100, 40, 8);
   rect(0, 280, 100, 20, 5);
   rect(0, 310, 100, 10, 3);
   rect(0, 330, 100, 5, 2);
 
+  // Letter background
+  rect(0, 35, 100,60, 12);
+  rect(0, 85, 100,60, 14);
+  rect(0, 135, 100,60, 17);
+
   // Draw the filled in rectangle
   fill(rectColor);
   rect(rectX + rectOffset, rectY + rectOffset, rectWidth,rectHeight,15);
+
+  stroke(shadow);
+  strokeWeight(8);
+  
+  line(x1+1,y1+1, x2+1,y2+1);
+  line(x3+1,y3+1, x4+1,y4+1);
+  line(x5+1,y5+1, x6+1,y6+1);
 
   // Draw all non-rectangle lines
   stroke(strokeColor);
@@ -79,6 +93,21 @@ function drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lineOrder)
 
 // Draws the lines around the rectangle in a clockwise fashion
 function drawLinesClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
+  stroke(shadow);
+  strokeWeight(8);
+
+  // Left
+  line(x+1, y+1, x+1, y + rectOffset * 2 + rectHeight+1);
+  // Bottom
+  if (lineCount > 3) line(x + rectOffset * 2+1, y + rectOffset * 2 + rectHeight+1, x + rectWidth+1, y + rectOffset * 2 + rectHeight+1);
+  // Right
+  if (lineCount > 2) line(x + rectOffset * 2 + rectWidth+1, y + rectOffset * 2 + rectHeight+1, x + rectOffset * 2 + rectWidth+1, y+1);
+  // Top
+  if (lineCount > 1) line(x + rectWidth+1, y+1, x + rectOffset * 2+1, y+1);
+
+  stroke(strokeColor);
+  strokeWeight(6);
+
   // Left
   line(x, y, x, y + rectOffset * 2 + rectHeight);
   // Bottom
@@ -91,6 +120,21 @@ function drawLinesClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) 
 
 // Draws the lines around the rectangle in a counterclockwise fashion
 function drawLinesCounterClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
+  stroke(shadow);
+  strokeWeight(8);
+
+  // Top
+  line(x + rectWidth+1, y+1, x + rectOffset * 2+1, y+1);
+  // Right
+  if (lineCount > 1) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
+  // Bottom
+  if (lineCount > 2) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
+  // Left
+  if (lineCount > 3) line(x, y, x, y + rectOffset * 2 + rectHeight);
+
+  stroke(strokeColor);
+  strokeWeight(6);
+
   // Top
   line(x + rectWidth, y, x + rectOffset * 2, y);
   // Right
@@ -163,7 +207,7 @@ function interpolateRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lin
 }
 
 var swapWords = [
-  "ABBAABBA",
-  "CAB?CAB?",
-  "BAAAAAAA"
+  "HONEYPOT",
+  "POGCHAMP",
+  "ARTISTIC"
 ]

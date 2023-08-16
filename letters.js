@@ -1,36 +1,3 @@
-// Default drawing function
-function drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lineOrder) {
-  if (lineOrder === "Clockwise") {
-    drawLinesClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount);
-  } else {
-    drawLinesCounterClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount);
-  }
-}
-
-// Draws the lines around the rectangle in a clockwise fashion
-function drawLinesClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
-  //left
-  line(x, y, x, y + rectOffset * 2 + rectHeight);
-  //bottom
-  if (lineCount > 3) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
-  // right
-  if (lineCount > 2) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
-  // top
-  if (lineCount > 1) line(x + rectWidth, y, x + rectOffset * 2, y);
-}
-
-// Draws the lines around the rectangle in a counterclockwise fashion
-function drawLinesCounterClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
-  //top
-  line(x + rectWidth, y, x + rectOffset * 2, y);
-  //right
-  if (lineCount > 1) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
-  //bottom
-  if (lineCount > 2) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
-  //left
-  if (lineCount > 3) line(x, y, x, y + rectOffset * 2 + rectHeight);
-}
-
 const alphabet = {
   "default": {
     "x1": 50,

@@ -163,8 +163,23 @@ function drawFromDataObject(x, y, s, obj) {
   push();
   translate(x, y);
   scale(s, s);
+  drawExtraRectangles();
   drawLetter(obj);
   pop();
+}
+
+function drawExtraRectangles() {
+  noStroke();
+  fill(backgroundRectColor);
+
+  rect(0, -95, 100, 5, 2);
+  rect(0, -80, 100, 10, 3);
+  rect(0, -60, 100, 20, 5);
+  rect(0, -30, 100, 40, 8);
+  rect(0, 230, 100, 40, 8);
+  rect(0, 280, 100, 20, 5);
+  rect(0, 310, 100, 10, 3);
+  rect(0, 330, 100, 5, 2);
 }
 
 function computeCurrentChosenChar(n) {

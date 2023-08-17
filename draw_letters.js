@@ -41,16 +41,6 @@ function drawLetter(letterData) {
   noStroke();
   fill(backgroundRectColor);
 
-  // Extra fading rects
-  rect(0, -95, 100, 5, 2);
-  rect(0, -80, 100, 10, 3);
-  rect(0, -60, 100, 20, 5);
-  rect(0, -30, 100, 40, 8);
-  rect(0, 230, 100, 40, 8);
-  rect(0, 280, 100, 20, 5);
-  rect(0, 310, 100, 10, 3);
-  rect(0, 330, 100, 5, 2);
-
   // Letter background
   rect(0, 35, 100,60, 12);
   rect(0, 85, 100,60, 14);

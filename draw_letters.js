@@ -200,6 +200,6 @@ var swapWords = [
   "SYNTHBOX",
   "VIBECUBE",
   "SPECTRUM",
-  "Twilight",
-  "Daydream"
+  "TWILIGHT",
+  "DAYDREAM"
 ]

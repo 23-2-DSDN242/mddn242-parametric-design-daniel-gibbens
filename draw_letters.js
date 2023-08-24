@@ -9,6 +9,9 @@ const rectColor  = "#8E00E0";
 const strokeColor  = "#B1D4F0";
 const shadow = "#C528C8";
 
+// Gap between lines and filled rectangle
+const rectOffset = 5;
+
 
 
 /*
@@ -36,7 +39,6 @@ function drawLetter(letterData) {
   var rectY = letterData["rectY"];
   var rectWidth = letterData["rectWidth"];
   var rectHeight = letterData["rectHeight"];
-  var rectOffset = letterData["rectOffset"];
   var lineCount = letterData["rectLines"];
   var lineOrder = letterData["rectOrder"];
   var percent = letterData["interpolatePercent"];
@@ -71,24 +73,24 @@ function drawLetter(letterData) {
   // Call the letters rectangle method
   if (lineCount > 0) {
     if (percent != 0) {
-      interpolateRect(rectX, rectY, rectWidth, rectHeight, rectOffset, lineCount, lineOrder, percent);
+      interpolateRect(rectX, rectY, rectWidth, rectHeight, lineCount, lineOrder, percent);
     } else {
-      drawRect(rectX, rectY, rectWidth, rectHeight, rectOffset, lineCount, lineOrder);
+      drawRect(rectX, rectY, rectWidth, rectHeight, lineCount, lineOrder);
     }
   }
 }
 
 // Helper function for selecting correct rotation
-function drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lineOrder) {
+function drawRect(x, y, rectWidth, rectHeight, lineCount, lineOrder) {
   if (lineOrder === "Clockwise") {
-    drawLinesClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount);
+    drawLinesClockwise(x, y, rectWidth, rectHeight, lineCount);
   } else {
-    drawLinesCounterClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount);
+    drawLinesCounterClockwise(x, y, rectWidth, rectHeight, lineCount);
   }
 }
 
 // Draws the lines around the rectangle in a clockwise fashion
-function drawLinesClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
+function drawLinesClockwise(x, y, rectWidth, rectHeight, lineCount) {
   // Draw shadow lines
   stroke(shadow);
   strokeWeight(8);
@@ -117,7 +119,7 @@ function drawLinesClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) 
 }
 
 // Draws the lines around the rectangle in a counterclockwise fashion
-function drawLinesCounterClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
+function drawLinesCounterClockwise(x, y, rectWidth, rectHeight, lineCount) {
   // Draw shadow lines
   stroke(shadow);
   strokeWeight(8);
@@ -167,7 +169,6 @@ function interpolate_letter(percent, oldObj, newObj) {
   new_letter["rectY"] = map(percent, 0, 100, oldObj["rectY"], newObj["rectY"]);
   new_letter["rectWidth"] = map(percent, 0, 100, oldObj["rectWidth"], newObj["rectWidth"]);
   new_letter["rectHeight"] = map(percent, 0, 100, oldObj["rectHeight"], newObj["rectHeight"]);
-  new_letter["rectOffset"] = map(percent, 0, 100, oldObj["rectOffset"], newObj["rectOffset"]);
 
   // Enable smooth transition of different line count and rotation by changing when rectangle lines are not displayed
   if (percent < 50) {
@@ -187,23 +188,21 @@ function interpolate_letter(percent, oldObj, newObj) {
 }
 
 // Helper function for mapping rectangle lines to centre of rect and back out again
-function interpolateRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lineOrder, percent) {
+function interpolateRect(x, y, rectWidth, rectHeight, lineCount, lineOrder, percent) {
   if (percent < 50) {
     // Move lines towards the centre of the rectangle
     x = map(percent, 0, 50, x, x + rectOffset + rectWidth/2);
     y = map(percent, 0, 50, y, y + rectOffset + rectHeight/2);
     rectWidth = map(percent, 0, 50, rectWidth, 0);
     rectHeight = map(percent, 0, 50, rectHeight, 0);
-    rectOffset = map(percent, 0, 50, rectOffset, 0);
-    drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lineOrder)
+    drawRect(x, y, rectWidth, rectHeight, lineCount, lineOrder)
   } else {
     // Move lines away from the centre of the rectangle
     x = map(percent, 50, 100, x + rectOffset + rectWidth/2, x);
     y = map(percent, 50, 100, y + rectOffset + rectHeight/2, y);
     rectWidth = map(percent, 50, 100, 0, rectWidth);
     rectHeight = map(percent, 50, 100, 0, rectHeight);
-    rectOffset = map(percent, 50, 100, 0, rectOffset);
-    drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lineOrder)
+    drawRect(x, y, rectWidth, rectHeight, lineCount, lineOrder)
   }
   
 }

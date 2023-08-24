@@ -1,13 +1,15 @@
-/* these are optional special variables which will change the system */
+// System constants
 var systemBackgroundColor = "#191128";
 var systemLineColor = "#264653";
 var systemBoxColor = "#00c800";
 
-/* internal constants */
+// Color constants
+const backgroundRectColor = "#26132E";
 const rectColor  = "#8E00E0";
 const strokeColor  = "#B1D4F0";
-const backgroundRectColor = "#26132E";
 const shadow = "#C528C8";
+
+
 
 /*
  * Draw the letter given the letterData
@@ -39,11 +41,9 @@ function drawLetter(letterData) {
   var lineOrder = letterData["rectOrder"];
   var percent = letterData["interpolatePercent"];
 
-  // Extra effects
+  // Draw the letter background rectangles
   noStroke();
   fill(backgroundRectColor);
-
-  // Letter background
   rect(0, 35, 100,60, 12);
   rect(0, 85, 100,60, 14);
   rect(0, 135, 100,60, 17);
@@ -52,6 +52,7 @@ function drawLetter(letterData) {
   fill(rectColor);
   rect(rectX + rectOffset, rectY + rectOffset, rectWidth,rectHeight,15);
 
+  // Draw non-rectangle line shadows
   stroke(shadow);
   strokeWeight(8);
   
@@ -59,7 +60,7 @@ function drawLetter(letterData) {
   line(x3+1,y3+1, x4+1,y4+1);
   line(x5+1,y5+1, x6+1,y6+1);
 
-  // Draw all non-rectangle lines
+  // Draw non-rectangle lines
   stroke(strokeColor);
   strokeWeight(6);
   
@@ -68,7 +69,6 @@ function drawLetter(letterData) {
   line(x5,y5, x6,y6);
 
   // Call the letters rectangle method
-  // Note: this will be the same until interpolating
   if (lineCount > 0) {
     if (percent != 0) {
       interpolateRect(rectX, rectY, rectWidth, rectHeight, rectOffset, lineCount, lineOrder, percent);
@@ -89,6 +89,7 @@ function drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lineOrder)
 
 // Draws the lines around the rectangle in a clockwise fashion
 function drawLinesClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
+  // Draw shadow lines
   stroke(shadow);
   strokeWeight(8);
 
@@ -101,6 +102,7 @@ function drawLinesClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) 
   // Top
   if (lineCount > 1) line(x + rectWidth+1, y+1, x + rectOffset * 2+1, y+1);
 
+  // Draw lines
   stroke(strokeColor);
   strokeWeight(6);
 
@@ -116,6 +118,7 @@ function drawLinesClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) 
 
 // Draws the lines around the rectangle in a counterclockwise fashion
 function drawLinesCounterClockwise(x, y, rectWidth, rectHeight, rectOffset, lineCount) {
+  // Draw shadow lines
   stroke(shadow);
   strokeWeight(8);
 
@@ -128,6 +131,7 @@ function drawLinesCounterClockwise(x, y, rectWidth, rectHeight, rectOffset, line
   // Left
   if (lineCount > 3) line(x, y, x, y + rectOffset * 2 + rectHeight);
 
+  // Draw lines
   stroke(strokeColor);
   strokeWeight(6);
 
@@ -174,7 +178,7 @@ function interpolate_letter(percent, oldObj, newObj) {
     new_letter["rectOrder"] = newObj["rectOrder"];
   }
   
-  // Only update the draw method when interpolating
+  // Save the percent value for drawing the rectangle when interpolating
   if (percent != 0 || percent != 100) {
     new_letter["interpolatePercent"] = percent;
   }
@@ -185,6 +189,7 @@ function interpolate_letter(percent, oldObj, newObj) {
 // Helper function for mapping rectangle lines to centre of rect and back out again
 function interpolateRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lineOrder, percent) {
   if (percent < 50) {
+    // Move lines towards the centre of the rectangle
     x = map(percent, 0, 50, x, x + rectOffset + rectWidth/2);
     y = map(percent, 0, 50, y, y + rectOffset + rectHeight/2);
     rectWidth = map(percent, 0, 50, rectWidth, 0);
@@ -192,6 +197,7 @@ function interpolateRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lin
     rectOffset = map(percent, 0, 50, rectOffset, 0);
     drawRect(x, y, rectWidth, rectHeight, rectOffset, lineCount, lineOrder)
   } else {
+    // Move lines away from the centre of the rectangle
     x = map(percent, 50, 100, x + rectOffset + rectWidth/2, x);
     y = map(percent, 50, 100, y + rectOffset + rectHeight/2, y);
     rectWidth = map(percent, 50, 100, 0, rectWidth);

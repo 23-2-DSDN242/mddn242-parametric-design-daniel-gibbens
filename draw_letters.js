@@ -12,8 +12,6 @@ const shadow = "#C528C8";
 // Gap between lines and filled rectangle
 const rectOffset = 5;
 
-
-
 /*
  * Draw the letter given the letterData
  *
@@ -195,14 +193,14 @@ function interpolateRect(x, y, rectWidth, rectHeight, lineCount, lineOrder, perc
     y = map(percent, 0, 50, y, y + rectOffset + rectHeight/2);
     rectWidth = map(percent, 0, 50, rectWidth, 0);
     rectHeight = map(percent, 0, 50, rectHeight, 0);
-    drawRect(x, y, rectWidth, rectHeight, lineCount, lineOrder)
+    drawRect(x, y, rectWidth, rectHeight, lineCount, lineOrder);
   } else {
     // Move lines away from the centre of the rectangle
     x = map(percent, 50, 100, x + rectOffset + rectWidth/2, x);
     y = map(percent, 50, 100, y + rectOffset + rectHeight/2, y);
     rectWidth = map(percent, 50, 100, 0, rectWidth);
     rectHeight = map(percent, 50, 100, 0, rectHeight);
-    drawRect(x, y, rectWidth, rectHeight, lineCount, lineOrder)
+    drawRect(x, y, rectWidth, rectHeight, lineCount, lineOrder);
   }
   
 }

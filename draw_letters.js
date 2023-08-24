@@ -36,6 +36,8 @@ function drawLetter(letterData) {
   var rectHeight = letterData["rectHeight"];
   var rectOffset = letterData["rectOffset"];
   var lineCount = letterData["rectLines"];
+  var lineOrder = letterData["rectOrder"];
+  var percent = letterData["interpolatePercent"];
 
   // Extra effects
   noStroke();
@@ -68,7 +70,11 @@ function drawLetter(letterData) {
   // Call the letters rectangle method
   // Note: this will be the same until interpolating
   if (lineCount > 0) {
-    letterData["draw"]();
+    if (percent != 0) {
+      interpolateRect(rectX, rectY, rectWidth, rectHeight, rectOffset, lineCount, lineOrder, percent);
+    } else {
+      drawRect(rectX, rectY, rectWidth, rectHeight, rectOffset, lineCount, lineOrder);
+    }
   }
 }
 
@@ -170,7 +176,7 @@ function interpolate_letter(percent, oldObj, newObj) {
   
   // Only update the draw method when interpolating
   if (percent != 0 || percent != 100) {
-    new_letter["draw"] = () => interpolateRect(new_letter["rectX"], new_letter["rectY"], new_letter["rectWidth"], new_letter["rectHeight"], new_letter["rectOffset"], new_letter["rectLines"], new_letter["rectOrder"], percent);
+    new_letter["interpolatePercent"] = percent;
   }
 
   return new_letter;

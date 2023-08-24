@@ -40,8 +40,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["A"].rectX, alphabet["A"].rectY, alphabet["A"].rectWidth, alphabet["A"].rectHeight,
-                       alphabet["A"].rectOffset, alphabet["A"].rectLines, alphabet["A"].rectOrder)
+    "interpolatePercent": 0
   },
   "B": {
     "x1": 15,
@@ -63,8 +62,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["B"].rectX, alphabet["B"].rectY, alphabet["B"].rectWidth, alphabet["B"].rectHeight,
-                           alphabet["B"].rectOffset, alphabet["B"].rectLines, alphabet["B"].rectOrder)
+    "interpolatePercent": 0
   },
   "C": {
     "x1": 15,
@@ -86,8 +84,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["C"].rectX, alphabet["C"].rectY, alphabet["C"].rectWidth, alphabet["C"].rectHeight,
-                       alphabet["C"].rectOffset, alphabet["C"].rectLines, alphabet["C"].rectOrder)
+    "interpolatePercent": 0
   },
   "D": {
     "x1": 85,
@@ -109,8 +106,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["D"].rectX, alphabet["D"].rectY, alphabet["D"].rectWidth, alphabet["D"].rectHeight,
-                       alphabet["D"].rectOffset, alphabet["D"].rectLines, alphabet["D"].rectOrder)
+    "interpolatePercent": 0
   },
   "E": {
     "x1": 15,
@@ -132,8 +128,7 @@ const alphabet = {
     "rectHeight": 35,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["E"].rectX, alphabet["E"].rectY, alphabet["E"].rectWidth, alphabet["E"].rectHeight,
-                       alphabet["E"].rectOffset, alphabet["E"].rectLines, alphabet["E"].rectOrder)
+    "interpolatePercent": 0
   },
   "F": {
     "x1": 35,
@@ -155,8 +150,7 @@ const alphabet = {
     "rectHeight": 40,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["F"].rectX, alphabet["F"].rectY, alphabet["F"].rectWidth, alphabet["F"].rectHeight,
-                       alphabet["F"].rectOffset, alphabet["F"].rectLines, alphabet["F"].rectOrder)
+    "interpolatePercent": 0
   },
   "G": {
     "x1": 25,
@@ -178,8 +172,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["G"].rectX, alphabet["G"].rectY, alphabet["G"].rectWidth, alphabet["G"].rectHeight,
-                       alphabet["G"].rectOffset, alphabet["G"].rectLines, alphabet["G"].rectOrder)
+    "interpolatePercent": 0
   },
   "H": {
     "x1": 15,
@@ -201,8 +194,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["H"].rectX, alphabet["H"].rectY, alphabet["H"].rectWidth, alphabet["H"].rectHeight,
-                       alphabet["H"].rectOffset, alphabet["H"].rectLines, alphabet["H"].rectOrder)
+    "interpolatePercent": 0
   },
   "I": {
     "x1": 50,
@@ -224,8 +216,7 @@ const alphabet = {
     "rectHeight": 20,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["I"].rectX, alphabet["I"].rectY, alphabet["I"].rectWidth, alphabet["I"].rectHeight,
-                       alphabet["I"].rectOffset, alphabet["I"].rectLines, alphabet["I"].rectOrder)
+    "interpolatePercent": 0
   },
   "J": {
     "x1": 50,
@@ -247,8 +238,7 @@ const alphabet = {
     "rectHeight": 20,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["J"].rectX, alphabet["J"].rectY, alphabet["J"].rectWidth, alphabet["J"].rectHeight,
-                       alphabet["J"].rectOffset, alphabet["J"].rectLines, alphabet["J"].rectOrder)
+    "interpolatePercent": 0
   },
   "K": {
     "x1": 15,
@@ -270,8 +260,7 @@ const alphabet = {
     "rectHeight": 30,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["K"].rectX, alphabet["K"].rectY, alphabet["K"].rectWidth, alphabet["K"].rectHeight,
-                       alphabet["K"].rectOffset, alphabet["K"].rectLines, alphabet["K"].rectOrder)
+    "interpolatePercent": 0
   },
   "L": {
     "x1": 50,
@@ -293,8 +282,7 @@ const alphabet = {
     "rectHeight": 140,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["L"].rectX, alphabet["L"].rectY, alphabet["L"].rectWidth, alphabet["L"].rectHeight,
-                       alphabet["L"].rectOffset, alphabet["L"].rectLines, alphabet["L"].rectOrder)
+    "interpolatePercent": 0
   },
   "M": {
     "x1": 25,
@@ -316,8 +304,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["M"].rectX, alphabet["M"].rectY, alphabet["M"].rectWidth, alphabet["M"].rectHeight,
-                       alphabet["M"].rectOffset, alphabet["M"].rectLines, alphabet["M"].rectOrder)
+    "interpolatePercent": 0
   },
   "N": {
     "x1": 15,
@@ -339,8 +326,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["N"].rectX, alphabet["N"].rectY, alphabet["N"].rectWidth, alphabet["N"].rectHeight,
-                       alphabet["N"].rectOffset, alphabet["N"].rectLines, alphabet["N"].rectOrder)
+    "interpolatePercent": 0
   },
   "O": {
     "x1": 15,
@@ -362,8 +348,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["O"].rectX, alphabet["O"].rectY, alphabet["O"].rectWidth, alphabet["O"].rectHeight,
-                       alphabet["O"].rectOffset, alphabet["O"].rectLines, alphabet["O"].rectOrder)
+    "interpolatePercent": 0
   },
   "P": {
     "x1": 15,
@@ -385,8 +370,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["P"].rectX, alphabet["P"].rectY, alphabet["P"].rectWidth, alphabet["P"].rectHeight,
-                       alphabet["P"].rectOffset, alphabet["P"].rectLines, alphabet["P"].rectOrder)
+    "interpolatePercent": 0
   },
   "Q": {
     "x1": 80,
@@ -408,8 +392,7 @@ const alphabet = {
     "rectHeight": 55,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["Q"].rectX, alphabet["Q"].rectY, alphabet["Q"].rectWidth, alphabet["Q"].rectHeight,
-                       alphabet["Q"].rectOffset, alphabet["Q"].rectLines, alphabet["Q"].rectOrder)
+    "interpolatePercent": 0
   },
   "R": {
     "x1": 15,
@@ -431,8 +414,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["R"].rectX, alphabet["R"].rectY, alphabet["R"].rectWidth, alphabet["R"].rectHeight,
-                       alphabet["R"].rectOffset, alphabet["R"].rectLines, alphabet["R"].rectOrder)
+    "interpolatePercent": 0
   },
   "S": {
     "x1": 25,
@@ -454,8 +436,7 @@ const alphabet = {
     "rectHeight": 30,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["S"].rectX, alphabet["S"].rectY, alphabet["S"].rectWidth, alphabet["S"].rectHeight,
-                       alphabet["S"].rectOffset, alphabet["S"].rectLines, alphabet["S"].rectOrder)
+    "interpolatePercent": 0
   },
   "T": {
     "x1": 15,
@@ -477,8 +458,7 @@ const alphabet = {
     "rectHeight": 80,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["T"].rectX, alphabet["T"].rectY, alphabet["T"].rectWidth, alphabet["T"].rectHeight,
-                       alphabet["T"].rectOffset, alphabet["T"].rectLines, alphabet["T"].rectOrder)
+    "interpolatePercent": 0
   },
   "U": {
     "x1": 25,
@@ -500,8 +480,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["U"].rectX, alphabet["U"].rectY, alphabet["U"].rectWidth, alphabet["U"].rectHeight,
-                       alphabet["U"].rectOffset, alphabet["U"].rectLines, alphabet["U"].rectOrder)
+    "interpolatePercent": 0
   },
   "V": {
     "x1": 15,
@@ -523,8 +502,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["V"].rectX, alphabet["V"].rectY, alphabet["V"].rectWidth, alphabet["V"].rectHeight,
-                       alphabet["V"].rectOffset, alphabet["V"].rectLines, alphabet["V"].rectOrder)
+    "interpolatePercent": 0
   },
   "W": {
     "x1": 25,
@@ -546,8 +524,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["W"].rectX, alphabet["W"].rectY, alphabet["W"].rectWidth, alphabet["W"].rectHeight,
-                           alphabet["W"].rectOffset, alphabet["W"].rectLines, alphabet["W"].rectOrder)
+    "interpolatePercent": 0
   },
   "X": {
     "x1": 15,
@@ -569,8 +546,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["X"].rectX, alphabet["X"].rectY, alphabet["X"].rectWidth, alphabet["X"].rectHeight,
-                           alphabet["X"].rectOffset, alphabet["X"].rectLines, alphabet["X"].rectOrder)  
+    "interpolatePercent": 0
   },
   "Y": {
     "x1": 85,
@@ -592,8 +568,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["Y"].rectX, alphabet["Y"].rectY, alphabet["Y"].rectWidth, alphabet["Y"].rectHeight,
-                           alphabet["Y"].rectOffset, alphabet["Y"].rectLines, alphabet["Y"].rectOrder)
+    "interpolatePercent": 0
   },
   "Z": {
     "x1": 75,
@@ -615,8 +590,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["Z"].rectX, alphabet["Z"].rectY, alphabet["Z"].rectWidth, alphabet["Z"].rectHeight,
-                           alphabet["Z"].rectOffset, alphabet["Z"].rectLines, alphabet["Z"].rectOrder)
+    "interpolatePercent": 0
   },
   "0": {
     "x1": 15,
@@ -638,8 +612,7 @@ const alphabet = {
     "rectHeight": 130,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["0"].rectX, alphabet["0"].rectY, alphabet["0"].rectWidth, alphabet["0"].rectHeight,
-                           alphabet["0"].rectOffset, alphabet["0"].rectLines, alphabet["0"].rectOrder)
+    "interpolatePercent": 0
   },
   "1": {
     "x1": 15,
@@ -661,8 +634,7 @@ const alphabet = {
     "rectHeight": 130,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["1"].rectX, alphabet["1"].rectY, alphabet["1"].rectWidth, alphabet["1"].rectHeight,
-                           alphabet["1"].rectOffset, alphabet["1"].rectLines, alphabet["1"].rectOrder)
+    "interpolatePercent": 0
   },
   "2": {
     "x1": 75,
@@ -684,8 +656,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["2"].rectX, alphabet["2"].rectY, alphabet["2"].rectWidth, alphabet["2"].rectHeight,
-                           alphabet["2"].rectOffset, alphabet["2"].rectLines, alphabet["2"].rectOrder)
+    "interpolatePercent": 0
   },
   "3": {
     "x1": 25,
@@ -707,8 +678,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "CounterClockwise",
-    "draw": () => drawRect(alphabet["3"].rectX, alphabet["3"].rectY, alphabet["3"].rectWidth, alphabet["3"].rectHeight,
-                           alphabet["3"].rectOffset, alphabet["3"].rectLines, alphabet["3"].rectOrder)
+    "interpolatePercent": 0
   },
   "4": {
     "x1": 25,
@@ -730,8 +700,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["4"].rectX, alphabet["4"].rectY, alphabet["4"].rectWidth, alphabet["4"].rectHeight,
-                           alphabet["4"].rectOffset, alphabet["4"].rectLines, alphabet["4"].rectOrder)
+    "interpolatePercent": 0
   },
   "5": {
     "x1": 25,
@@ -753,8 +722,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["5"].rectX, alphabet["5"].rectY, alphabet["5"].rectWidth, alphabet["5"].rectHeight,
-                           alphabet["5"].rectOffset, alphabet["5"].rectLines, alphabet["5"].rectOrder)
+    "interpolatePercent": 0
   },
   "6": {
     "x1": 15,
@@ -776,8 +744,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["6"].rectX, alphabet["6"].rectY, alphabet["6"].rectWidth, alphabet["6"].rectHeight,
-                           alphabet["6"].rectOffset, alphabet["6"].rectLines, alphabet["6"].rectOrder)
+    "interpolatePercent": 0
   },
   "7": {
     "x1": 25,
@@ -799,8 +766,7 @@ const alphabet = {
     "rectHeight": 130,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["7"].rectX, alphabet["7"].rectY, alphabet["7"].rectWidth, alphabet["7"].rectHeight,
-                           alphabet["7"].rectOffset, alphabet["7"].rectLines, alphabet["7"].rectOrder)
+    "interpolatePercent": 0
   },
   "8": {
     "x1": 15,
@@ -822,8 +788,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["8"].rectX, alphabet["8"].rectY, alphabet["8"].rectWidth, alphabet["8"].rectHeight,
-                           alphabet["B"].rectOffset, alphabet["B"].rectLines, alphabet["8"].rectOrder)
+    "interpolatePercent": 0
   },
   "9": {
     "x1": 25,
@@ -845,8 +810,7 @@ const alphabet = {
     "rectHeight": 60,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["9"].rectX, alphabet["9"].rectY, alphabet["9"].rectWidth, alphabet["9"].rectHeight,
-                           alphabet["9"].rectOffset, alphabet["9"].rectLines, alphabet["9"].rectOrder)
+    "interpolatePercent": 0
   },
   "?": {
     "x1": 50,
@@ -868,7 +832,6 @@ const alphabet = {
     "rectHeight": 20,
     "rectOffset": 5,
     "rectOrder": "Clockwise",
-    "draw": () => drawRect(alphabet["?"].rectX, alphabet["?"].rectY, alphabet["?"].rectWidth, alphabet["?"].rectHeight,
-                           alphabet["?"].rectOffset, alphabet["?"].rectLines, alphabet["?"].rectOrder)
+    "interpolatePercent": 0
   }
 }

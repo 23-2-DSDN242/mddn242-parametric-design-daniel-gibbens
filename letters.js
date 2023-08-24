@@ -17,7 +17,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1
+    "clockwiseLines": 1
   },
   "A": {
     "x1": 95,
@@ -37,7 +37,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "B": {
@@ -58,7 +58,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "C": {
@@ -79,7 +79,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "D": {
@@ -100,7 +100,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "E": {
@@ -121,7 +121,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 35,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "F": {
@@ -142,7 +142,7 @@ const alphabet = {
     "rectY": 45,
     "rectWidth": 60,
     "rectHeight": 40,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "G": {
@@ -163,7 +163,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "H": {
@@ -184,7 +184,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "I": {
@@ -205,7 +205,7 @@ const alphabet = {
     "rectY": 75,
     "rectWidth": 20,
     "rectHeight": 20,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "J": {
@@ -226,7 +226,7 @@ const alphabet = {
     "rectY": 75,
     "rectWidth": 20,
     "rectHeight": 20,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "K": {
@@ -247,7 +247,7 @@ const alphabet = {
     "rectY": 85,
     "rectWidth": 30,
     "rectHeight": 30,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "L": {
@@ -268,7 +268,7 @@ const alphabet = {
     "rectY": 40,
     "rectWidth": 20,
     "rectHeight": 140,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "M": {
@@ -289,7 +289,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "N": {
@@ -310,7 +310,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "O": {
@@ -331,7 +331,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "P": {
@@ -352,7 +352,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "Q": {
@@ -373,7 +373,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 55,
     "rectHeight": 55,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "R": {
@@ -394,7 +394,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "S": {
@@ -415,7 +415,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 30,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "T": {
@@ -436,7 +436,7 @@ const alphabet = {
     "rectY": 95,
     "rectWidth": 35,
     "rectHeight": 80,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "U": {
@@ -457,7 +457,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "V": {
@@ -478,7 +478,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "W": {
@@ -499,7 +499,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "X": {
@@ -520,7 +520,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "Y": {
@@ -541,7 +541,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "Z": {
@@ -562,7 +562,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "0": {
@@ -583,7 +583,7 @@ const alphabet = {
     "rectY": 45,
     "rectWidth": 60,
     "rectHeight": 130,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "1": {
@@ -604,7 +604,7 @@ const alphabet = {
     "rectY": 45,
     "rectWidth": 30,
     "rectHeight": 130,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "2": {
@@ -625,7 +625,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "3": {
@@ -646,7 +646,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 0,
+    "clockwiseLines": 0,
     "interpolatePercent": 0
   },
   "4": {
@@ -667,7 +667,7 @@ const alphabet = {
     "rectY": 45,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "5": {
@@ -688,7 +688,7 @@ const alphabet = {
     "rectY": 45,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "6": {
@@ -709,7 +709,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "7": {
@@ -730,7 +730,7 @@ const alphabet = {
     "rectY": 45,
     "rectWidth": 60,
     "rectHeight": 130,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "8": {
@@ -751,7 +751,7 @@ const alphabet = {
     "rectY": 115,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "9": {
@@ -772,7 +772,7 @@ const alphabet = {
     "rectY": 45,
     "rectWidth": 60,
     "rectHeight": 60,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   },
   "?": {
@@ -793,7 +793,7 @@ const alphabet = {
     "rectY": 155,
     "rectWidth": 20,
     "rectHeight": 20,
-    "clockwiseRectOrder": 1,
+    "clockwiseLines": 1,
     "interpolatePercent": 0
   }
 }

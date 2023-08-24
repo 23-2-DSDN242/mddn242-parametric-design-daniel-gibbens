@@ -38,7 +38,7 @@ function drawLetter(letterData) {
   var rectWidth = letterData["rectWidth"];
   var rectHeight = letterData["rectHeight"];
   var lineCount = letterData["rectLines"];
-  var lineOrder = letterData["rectOrder"];
+  var clockwiseLines = letterData["clockwiseLines"];
   var percent = letterData["interpolatePercent"];
 
   // Draw the letter background rectangles
@@ -71,16 +71,16 @@ function drawLetter(letterData) {
   // Call the letters rectangle method
   if (lineCount > 0) {
     if (percent != 0) {
-      interpolateRect(rectX, rectY, rectWidth, rectHeight, lineCount, lineOrder, percent);
+      interpolateRect(rectX, rectY, rectWidth, rectHeight, lineCount, clockwiseLines, percent);
     } else {
-      drawRect(rectX, rectY, rectWidth, rectHeight, lineCount, lineOrder);
+      drawRect(rectX, rectY, rectWidth, rectHeight, lineCount, clockwiseLines);
     }
   }
 }
 
 // Helper function for selecting correct rotation
-function drawRect(x, y, rectWidth, rectHeight, lineCount, lineOrder) {
-  if (lineOrder === "Clockwise") {
+function drawRect(x, y, rectWidth, rectHeight, lineCount, clockwiseLines) {
+  if (clockwiseLines === 1) {
     drawLinesClockwise(x, y, rectWidth, rectHeight, lineCount);
   } else {
     drawLinesCounterClockwise(x, y, rectWidth, rectHeight, lineCount);
@@ -171,10 +171,10 @@ function interpolate_letter(percent, oldObj, newObj) {
   // Enable smooth transition of different line count and rotation by changing when rectangle lines are not displayed
   if (percent < 50) {
     new_letter["rectLines"] = oldObj["rectLines"];
-    new_letter["rectOrder"] = oldObj["rectOrder"];
+    new_letter["clockwiseLines"] = oldObj["clockwiseLines"];
   } else {
     new_letter["rectLines"] = newObj["rectLines"];
-    new_letter["rectOrder"] = newObj["rectOrder"];
+    new_letter["clockwiseLines"] = newObj["clockwiseLines"];
   }
   
   // Save the percent value for drawing the rectangle when interpolating
@@ -186,21 +186,21 @@ function interpolate_letter(percent, oldObj, newObj) {
 }
 
 // Helper function for mapping rectangle lines to centre of rect and back out again
-function interpolateRect(x, y, rectWidth, rectHeight, lineCount, lineOrder, percent) {
+function interpolateRect(x, y, rectWidth, rectHeight, lineCount, clockwiseLines, percent) {
   if (percent < 50) {
     // Move lines towards the centre of the rectangle
     x = map(percent, 0, 50, x, x + rectOffset + rectWidth/2);
     y = map(percent, 0, 50, y, y + rectOffset + rectHeight/2);
     rectWidth = map(percent, 0, 50, rectWidth, 0);
     rectHeight = map(percent, 0, 50, rectHeight, 0);
-    drawRect(x, y, rectWidth, rectHeight, lineCount, lineOrder);
+    drawRect(x, y, rectWidth, rectHeight, lineCount, clockwiseLines);
   } else {
     // Move lines away from the centre of the rectangle
     x = map(percent, 50, 100, x + rectOffset + rectWidth/2, x);
     y = map(percent, 50, 100, y + rectOffset + rectHeight/2, y);
     rectWidth = map(percent, 50, 100, 0, rectWidth);
     rectHeight = map(percent, 50, 100, 0, rectHeight);
-    drawRect(x, y, rectWidth, rectHeight, lineCount, lineOrder);
+    drawRect(x, y, rectWidth, rectHeight, lineCount, clockwiseLines);
   }
   
 }

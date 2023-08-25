@@ -6,24 +6,23 @@
  */
 const sliderInfo = [
   ["x1", 0, 100],
-  ["y1", 0, 100],
+  ["y1", 35, 255],
   ["x2", 0, 100],
-  ["y2", 0, 100],
+  ["y2", 35, 255],
   ["x3", 0, 100],
-  ["y3", 0, 100],
+  ["y3", 35, 255],
   ["x4", 0, 100],
-  ["y4", 0, 100],
+  ["y4", 35, 255],
   ["x5", 0, 100],
-  ["y5", 0, 100],
+  ["y5", 35, 255],
   ["x6", 0, 100],
-  ["y6", 0, 100],
+  ["y6", 35, 255],
   ["rectLines", 0, 4],
-  ["rectX", 15, 0, 100],
-  ["rectY", 115, 0, 100],
-  ["rectWidth", 0, 100],
-  ["rectHeight", 0, 100],
-  ["rectOffset", 0, 10],
-  ["rectOrder", 0, 1]
+  ["rectX", 0, 70],
+  ["rectY", 40, 162],
+  ["rectWidth", 15, 85],
+  ["rectHeight", 15, 85],
+  ["clockwiseLines", 0, 1]
 ];
 
 // PROBABLY DON'T NEED TO EDIT ANYTHING ELSE. STOP HERE.
@@ -46,6 +45,8 @@ function sliderToDataObject() {
     bounds_high = sliderInfo[i][2]
     obj[o_name] = map(param_sliders[i].value(), 0, 100, bounds_low, bounds_high);
   }
+  // Should not be undefined, although users do not need it for editing
+  obj["interpolatePercent"] = 0;
   return obj;
 }
 

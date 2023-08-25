@@ -95,12 +95,12 @@ function drawLinesClockwise(x, y, rectWidth, rectHeight, lineCount) {
 
   // Left
   line(x+1, y+1, x+1, y + rectOffset * 2 + rectHeight+1);
-  // Bottom
-  if (lineCount > 3) line(x + rectOffset * 2+1, y + rectOffset * 2 + rectHeight+1, x + rectWidth+1, y + rectOffset * 2 + rectHeight+1);
-  // Right
-  if (lineCount > 2) line(x + rectOffset * 2 + rectWidth+1, y + rectOffset * 2 + rectHeight+1, x + rectOffset * 2 + rectWidth+1, y+1);
   // Top
   if (lineCount > 1) line(x + rectWidth+1, y+1, x + rectOffset * 2+1, y+1);
+  // Right
+  if (lineCount > 2) line(x + rectOffset * 2 + rectWidth+1, y + rectOffset * 2 + rectHeight+1, x + rectOffset * 2 + rectWidth+1, y+1);
+  // Bottom
+  if (lineCount > 3) line(x + rectOffset * 2+1, y + rectOffset * 2 + rectHeight+1, x + rectWidth+1, y + rectOffset * 2 + rectHeight+1);
 
   // Draw lines
   stroke(strokeColor);
@@ -108,12 +108,12 @@ function drawLinesClockwise(x, y, rectWidth, rectHeight, lineCount) {
 
   // Left
   line(x, y, x, y + rectOffset * 2 + rectHeight);
-  // Bottom
-  if (lineCount > 3) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
-  // Right
-  if (lineCount > 2) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
   // Top
   if (lineCount > 1) line(x + rectWidth, y, x + rectOffset * 2, y);
+  // Right
+  if (lineCount > 2) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
+  // Bottom
+  if (lineCount > 3) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
 }
 
 // Draws the lines around the rectangle in a counterclockwise fashion
@@ -122,25 +122,27 @@ function drawLinesCounterClockwise(x, y, rectWidth, rectHeight, lineCount) {
   stroke(shadow);
   strokeWeight(8);
 
-  // Top
-  line(x + rectWidth+1, y+1, x + rectOffset * 2+1, y+1);
-  // Right
-  if (lineCount > 1) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
+  
   // Bottom
-  if (lineCount > 2) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
+  line(x + rectOffset * 2 + 1, y + rectOffset * 2 + rectHeight + 1, x + rectWidth + 1, y + rectOffset * 2 + rectHeight + 1);
+  // Right
+  if (lineCount > 1) line(x + rectOffset * 2 + rectWidth + 1, y + rectOffset * 2 + rectHeight + 1, x + rectOffset * 2 + rectWidth + 1, y + 1);
+  // Top
+  if (lineCount > 2) line(x + rectWidth + 1, y + 1, x + rectOffset * 2 + 1, y + 1);
   // Left
-  if (lineCount > 3) line(x, y, x, y + rectOffset * 2 + rectHeight);
+  if (lineCount > 3) line(x + 1, y + 1, x + 1, y + rectOffset * 2 + rectHeight + 1);
 
   // Draw lines
   stroke(strokeColor);
   strokeWeight(6);
 
-  // Top
-  line(x + rectWidth, y, x + rectOffset * 2, y);
+  
+  // Bottom
+  line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
   // Right
   if (lineCount > 1) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
-  // Bottom
-  if (lineCount > 2) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
+  // Top
+  if (lineCount > 2) line(x + rectWidth, y, x + rectOffset * 2, y);
   // Left
   if (lineCount > 3) line(x, y, x, y + rectOffset * 2 + rectHeight);
 }

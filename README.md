@@ -76,6 +76,8 @@ I have decided that letters with parts that hang over the "baseline" should exte
 
 Throughout this phase, I also dealt with minor issues. These included determining the ideal shapes, heights, and positions for filled-in rectangles in specific letter cases such as 'f', 'l', 'm', 's', 't', and '?'.
 
+Finally, since I knew these letters would be interpolated, I tried to ensure that even if two letters had a similar shape, they would be drawn slightly differently. For example, while both 'b' and 'd' have stems, I used distinct lines for each stem. This approach creates a more unique and intriguing interpolation animation, rather than just having the stem move to the right.
+
 The nineteen parameters at this point are:
   * `x1` : the x coordinate of the first point of the first line
   * `y1` : the y coordinate of the first point of the first line

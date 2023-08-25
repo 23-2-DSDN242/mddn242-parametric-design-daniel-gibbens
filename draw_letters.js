@@ -207,8 +207,7 @@ function interpolateRect(x, y, rectWidth, rectHeight, lineCount, clockwiseLines,
 
 var swapWords = [
   "SYNTHBOX",
-  "VIBECUBE",
-  "SPECTRUM",
+  "DAYDREAM",
   "TWILIGHT",
-  "DAYDREAM"
+  "SPECTRUM"
 ]

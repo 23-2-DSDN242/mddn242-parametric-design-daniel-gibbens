@@ -2,7 +2,7 @@
 
 For my alphabet design, each of my letters is created in lowercase using three lines and a custom rectangle function. The three lines are controlled by six x, y points using twelve parameters, while the rectangle function is controlled by six parameters. These parameters include the position (x, y), width, height, number of edges to draw, and the drawing order for those edges (either clockwise or counterclockwise). The rectangle function also draws a filled-in rectangle inside the edges. This rectangle is always drawn, but in most cases, it is used to fill an inner region of the letter, such as the inside of 'a' or 'p'. Additionally, each line/edge drawn features a shadow to the lower right. Finally, each letter is drawn over a fixed background of three rounded rectangles with an overlapping region.
 
-By utilising a combination of edges on the rectangle and three lines, my design is capable of recreating all the required letters and numbers.
+By utilising a combination of edges on the rectangle and three lines, my design is capable of recreating all the required letters and numbers in multiple ways.
 
 
 The nineteen parameters per letter:
@@ -10,14 +10,14 @@ The nineteen parameters per letter:
   * `y1` : the y coordinate of the first point of the first line
   * `x2` : the x coordinate of the second point of the first line
   * `y2` : the y coordinate of the second point of the first line
-  * `x3` : the x coordinate of the third point of the second line
-  * `y3` : the y coordinate of the third point of the second line
-  * `x4` : the x coordinate of the fourth point of the second line
-  * `y4` : the y coordinate of the fourth point of the second line
-  * `x5` : the x coordinate of the fifth point of the third line
-  * `y5` : the y coordinate of the fifth point of the third line
-  * `x6` : the x coordinate of the sixth point of the third line
-  * `y6` : the y coordinate of the sixth point of the third line
+  * `x3` : the x coordinate of the first point of the second line
+  * `y3` : the y coordinate of the first point of the second line
+  * `x4` : the x coordinate of the second point of the second line
+  * `y4` : the y coordinate of the second point of the second line
+  * `x5` : the x coordinate of the first point of the third line
+  * `y5` : the y coordinate of the first point of the third line
+  * `x6` : the x coordinate of the second point of the third line
+  * `y6` : the y coordinate of the second point of the third line
   * `rectLines` : the number of edges to draw around the filled-in rectangle
   * `rectX` : the x coordinate of the rectangle
   * `rectY` : the y coordinate of the rectangle
@@ -52,7 +52,7 @@ The fifteen parameters used for each letter:
   * `trianglePoint3X` : the X position of the third point of the triangle
   * `trianglePoint3Y` : the Y position of the third point of the triangle
 
-The main issue with this design is I use a custom draw functions to manipulate the order the shapes are drawn. A potential solution to this could be using three parameters to store the depth required for each shape determining the drawing order, eg for A in the sketch:
+The main issue with this design is I use custom draw functions to manipulate the order the shapes are drawn. A potential solution to this could be using three parameters to store the depth required for each shape determining the drawing order, eg for A in the sketch:
  * `ellipseDepth` : 3
  * `rectangleDepth` : 2
  * `triangleDepth` : 1
@@ -60,7 +60,7 @@ However, I do not believe that this design will interpolate smoothly, and I want
 
 For my next design, I took inspiration from block letters and used trapezoids to shape each letter. However, when I sketched out a few concepts by hand, I didn't like how the converging points of three or more trapezoids looked. So, I decided to try using lines instead.
 
-In this new approach, I chose to make my letters lowercase aiming for a more serene style. But I faced a problem: I was limited to using a maximum of twenty parameters. Even drawing just five lines required ten sets of x and y coordinates, using up most of these parameters. The issue escalated with letters like 'g' or numbers like '6' that needed six lines to be recognisable.
+In this new approach, I chose to make my letters lowercase aiming for a more serene style. But I faced a problem of the maximum of twenty parameters. Even drawing just five lines required ten sets of x and y coordinates, using up most of these parameters. The issue escalated with letters like 'g' or numbers like '6' that needed six lines to be recognisable.
 
 To solve this, I created a rectangle function that could be turned on or off with just one parameter. This change meant that letters like 'g' could be made with only the rectangle and two lines. With this modification, I only needed twelve parameters to control three lines, and five more for the rectangle's position (x, y), width, height, and the toggle.
 
@@ -72,7 +72,7 @@ I decided to continue developing my block lines design. Initially, I felt that t
 
 This design was effective until I reached the letter 'f'. Here, I needed five lines without a full rectangle. To accommodate this, I adjusted the rectangle toggle to correlate with the line count. This approach served well until I encountered the number '3'. This character required drawing the edges of the rectangle in a specific order, as the initial line drawn was on the left, needing to remain empty for the '3' shape. To address this, I introduced a parameter to control the sequence of line drawing.
 
-I have decided that letters with parts that hang over the "baseline" should extend outside the bounding box. I made this decision because my text is in lowercase, and it would appear incorrect for letters like 'b' and 'p' to start at the same height.
+I had decided that letters with parts that hang over the "baseline" should extend outside the bounding box. I made this decision because my text is in lowercase, and it would appear incorrect for letters like 'b' and 'p' to start at the same height.
 
 Throughout this phase, I also dealt with minor issues. These included determining the ideal shapes, heights, and positions for filled-in rectangles in specific letter cases such as 'f', 'l', 'm', 's', 't', and '?'.
 
@@ -83,14 +83,14 @@ The nineteen parameters at this point are:
   * `y1` : the y coordinate of the first point of the first line
   * `x2` : the x coordinate of the second point of the first line
   * `y2` : the y coordinate of the second point of the first line
-  * `x3` : the x coordinate of the third point of the second line
-  * `y3` : the y coordinate of the third point of the second line
-  * `x4` : the x coordinate of the fourth point of the second line
-  * `y4` : the y coordinate of the fourth point of the second line
-  * `x5` : the x coordinate of the fifth point of the third line
-  * `y5` : the y coordinate of the fifth point of the third line
-  * `x6` : the x coordinate of the sixth point of the third line
-  * `y6` : the y coordinate of the sixth point of the third line
+  * `x3` : the x coordinate of the first point of the second line
+  * `y3` : the y coordinate of the first point of the second line
+  * `x4` : the x coordinate of the second point of the second line
+  * `y4` : the y coordinate of the second point of the second line
+  * `x5` : the x coordinate of the first point of the third line
+  * `y5` : the y coordinate of the first point of the third line
+  * `x6` : the x coordinate of the second point of the third line
+  * `y6` : the y coordinate of the second point of the third line
   * `rectLines` : the number of edges to draw around the filled-in rectangle
   * `rectX` : the x coordinate of the rectangle
   * `rectY` : the y coordinate of the rectangle
@@ -142,6 +142,10 @@ At the time of creating these colour palettes, the font name I was using was "ho
 
 Other improvements include background rectangles to enhance visual hierarchy between letters as well as shadows for each line/edge to create a sense of depth
 
-I also realised that I had not changed the offset parameter because it would not fit well with the design. So, I decided to turn it into a constant instead of a changeable parameter. This decision was based on keeping the design balanced and consistent. By having a consistent offset, I ensured that the design remained visually harmonious. If I allowed varying gaps between the edges and the rectangle using the offset parameter, it could disrupt the overall balance. 
+I also realised that I had not changed the offset parameter because it would not fit well with the design. So, I decided to turn it into a constant instead of a changeable parameter. This decision was based on keeping the design balanced and consistent. By having a consistent offset, I ensured that the design remained visually harmonious. If I allowed varying gaps between the edges and the rectangle using the offset parameter, it could disrupt the overall balance.
 
-I also wanted to showcase multiple colour palettes, as I found myself liking more than one. The idea was to change the colours as words were interpolated, effectively enhancing visual variety. However, upon reviewing the template provided, it became clear that this approach was not feasible.
+Another experiment I conducted involved attempting to create contrast by drawing the three lines using a different stroke color than the edges of the rectangle. However, I ultimately decided against it as it made the piece too overwhelming.
+
+![linecontrast](assets/linecontrast.png)
+
+Finally I wanted to showcase multiple colour palettes, as I found myself liking more than one. The idea was to change the colours as words were interpolated, effectively enhancing visual variety. However, upon reviewing the template provided, it became clear that this approach was not feasible since this would cause the background to change colour when a single letter changed.

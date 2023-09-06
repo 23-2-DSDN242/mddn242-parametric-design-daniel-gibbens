@@ -34,7 +34,110 @@
     <li><a href="editor.html">editor</a>
     <li><a href="interaction.html">interaction</a>
     <li><a href="index.html">exhibition</a>
-<ul>
+</ul>
+Change colour theme (Synth 3 is the default)
+<style>
+    .color-palette {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .color-square {
+        width: 30px;
+        height: 50px;
+        margin: 0px;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .palette-name {
+        font-size: 25px;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+</style>
+<table>
+    <tr>
+    <td style="padding: 20px;">
+        <div class="color-palette" id="synth1-palette">
+            <div>
+                <div class="palette-name">Synth 1</div>
+                <div class="color-square" style="background-color: #191970;"></div>
+                <div class="color-square" style="background-color: #4B0082;"></div>
+                <div class="color-square" style="background-color: #FFD700;"></div>
+                <div class="color-square" style="background-color: #FF1493;"></div>
+                <div class="color-square" style="background-color: #9400D3;"></div>
+            </div>
+        </div>
+    </td>
+    <td style="padding: 20px;">
+        <div class="color-palette" id="synth2-palette">
+            <div>
+                <div class="palette-name">Synth 2</div>
+                <div class="color-square" style="background-color: #080125;"></div>
+                <div class="color-square" style="background-color: #071036;"></div>
+                <div class="color-square" style="background-color: #E9AF43;"></div>
+                <div class="color-square" style="background-color: #8A1E00;"></div>
+                <div class="color-square" style="background-color: #AF415E;"></div>
+            </div>
+        </div>
+    </td>
+    <td style="padding: 20px;">
+        <div class="color-palette" id="synth3-palette">
+            <div>
+                <div class="palette-name">Synth 3</div>
+                <div class="color-square" style="background-color: #191128;"></div>
+                <div class="color-square" style="background-color: #26132E;"></div>
+                <div class="color-square" style="background-color: #B1D4F0;"></div>
+                <div class="color-square" style="background-color: #C528C8;"></div>
+                <div class="color-square" style="background-color: #8E00E0;"></div>
+            </div>
+        </div>
+    </td>
+    <td style="padding: 20px;">
+        <div class="color-palette" id="honeypot-palette">
+            <div>
+                <div class="palette-name">Honeypot</div>
+                <div class="color-square" style="background-color: #F1CE76;"></div>
+                <div class="color-square" style="background-color: #E29250;"></div>
+                <div class="color-square" style="background-color: #264653;"></div>
+                <div class="color-square" style="background-color: #FFF4CE;"></div>
+                <div class="color-square" style="background-color: #2A9D8F;"></div>
+            </div>
+        </div>
+    </td>
+    <td style="padding: 20px;">
+        <div class="color-palette" id="text-palette">
+            <div>
+                <div class="palette-name">Text</div>
+                <div class="color-square" style="background-color: #e5e5e5;"></div>
+                <div class="color-square" style="background-color: #DCD9DD;"></div>
+                <div class="color-square" style="background-color: #000000;"></div>
+                <div class="color-square" style="background-color: #272527;"></div>
+                <div class="color-square" style="background-color: #99979A;"></div>
+            </div>
+        </div>
+    </td>
+    </tr>
+</table>
+<script>
+    const palettes = [
+        // Colors are stored as systemBackgroundColor, backgroundRectColor, strokeColor, shadow, rectColor
+        { id: "synth1-palette", colors: ["#191970", "#4B0082", "#FFD700", "#FF1493", "#9400D3"] },
+        { id: "synth2-palette", colors: ["#080125", "#071036", "#E9AF43", "#8A1E00", "#AF415E"] },
+        { id: "synth3-palette", colors: ["#191128", "#26132E", "#B1D4F0", "#C528C8", "#8E00E0"] },
+        { id: "honeypot-palette", colors: ["#F1CE76", "#E29250", "#264653", "#FFF4CE", "#2A9D8F"] },
+        { id: "text-palette", colors: ["#E5E5E5", "#DCD9DD", "#000000", "#272527", "#99979A"] },
+    ];
+
+    palettes.forEach((palette) => {
+        document.getElementById(palette.id).addEventListener("click", function () {
+            setTheme(palette.colors[0], palette.colors[1], palette.colors[2], palette.colors[3], palette.colors[4]);
+        });
+    });
+</script>
 
 <p>
         </div>

@@ -148,4 +148,4 @@ Another experiment I conducted involved attempting to create contrast by drawing
 
 ![linecontrast](assets/linecontrast.png)
 
-Finally I wanted to showcase multiple colour palettes, as I found myself liking more than one. The idea was to change the colours as words were interpolated, effectively enhancing visual variety. However, upon reviewing the template provided, it became clear that this approach was not feasible since this would cause the background to change colour when a single letter changed. So, instead, I enabled manual changes using HTML.
+Finally I wanted to showcase multiple colour palettes, as I found myself liking more than one. The idea was to change the colours as words were interpolated, effectively enhancing visual variety. However, upon reviewing the template provided, it became clear that this approach was not feasible since this would cause the background to change colour when a single letter changed. So, instead, I enabled manual changes using HTML as well as create a new text colour palette here to showcase my font in a normal colour setting for digital text.

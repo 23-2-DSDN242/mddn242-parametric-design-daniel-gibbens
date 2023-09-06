@@ -6,7 +6,7 @@ var systemBoxColor = "#00c800";
 // Color constants
 var backgroundRectColor = "#26132E";
 var rectColor  = "#8E00E0";
-var strokeColor  = "#B1D4F0";
+var strokeColor  = "#D7EDFF";
 var shadow = "#C528C8";
 
 // Gap between lines and filled rectangle
@@ -50,6 +50,8 @@ function drawLetter(letterData) {
   var clockwiseLines = letterData["clockwiseLines"];
   var percent = letterData["interpolatePercent"];
 
+  removeNeon();
+
   // Draw the letter background rectangles
   noStroke();
   fill(backgroundRectColor);
@@ -60,6 +62,8 @@ function drawLetter(letterData) {
   // Draw the filled in rectangle
   fill(rectColor);
   rect(rectX + rectOffset, rectY + rectOffset, rectWidth,rectHeight,15);
+
+  addNeon();
 
   // Draw non-rectangle line shadows
   stroke(shadow);
@@ -77,6 +81,13 @@ function drawLetter(letterData) {
   line(x3,y3, x4,y4);
   line(x5,y5, x6,y6);
 
+  stroke('FFFFFF');
+  strokeWeight(1);
+
+  line(x1,y1, x2,y2);
+  line(x3,y3, x4,y4);
+  line(x5,y5, x6,y6);
+
   // Call the letters rectangle method
   if (lineCount > 0) {
     if (percent != 0) {
@@ -85,6 +96,18 @@ function drawLetter(letterData) {
       drawRect(rectX, rectY, rectWidth, rectHeight, lineCount, clockwiseLines);
     }
   }
+}
+
+// Helper function for adding neon effect
+function addNeon() {
+  drawingContext.shadowBlur = 42;
+  drawingContext.shadowColor = shadow
+}
+
+// Helper function for removing neon effect
+function removeNeon() {
+  drawingContext.shadowBlur = 0
+  drawingContext.shadowColor = color(0,0,0,0);
 }
 
 // Helper function for selecting correct rotation
@@ -123,6 +146,19 @@ function drawLinesClockwise(x, y, rectWidth, rectHeight, lineCount) {
   if (lineCount > 2) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
   // Bottom
   if (lineCount > 3) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
+
+  // Draw inner lines
+  stroke('FFFFFF');
+  strokeWeight(1);
+
+  // Left
+  line(x, y, x, y + rectOffset * 2 + rectHeight);
+  // Top
+  if (lineCount > 1) line(x + rectWidth, y, x + rectOffset * 2, y);
+  // Right
+  if (lineCount > 2) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
+  // Bottom
+  if (lineCount > 3) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
 }
 
 // Draws the lines around the rectangle in a counterclockwise fashion
@@ -146,6 +182,19 @@ function drawLinesCounterClockwise(x, y, rectWidth, rectHeight, lineCount) {
   strokeWeight(6);
 
   
+  // Bottom
+  line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
+  // Right
+  if (lineCount > 1) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
+  // Top
+  if (lineCount > 2) line(x + rectWidth, y, x + rectOffset * 2, y);
+  // Left
+  if (lineCount > 3) line(x, y, x, y + rectOffset * 2 + rectHeight);
+
+  // Draw inner lines
+  stroke(shadow);
+  strokeWeight(1);
+
   // Bottom
   line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
   // Right

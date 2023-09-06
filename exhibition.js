@@ -169,17 +169,33 @@ function drawFromDataObject(x, y, s, obj) {
 }
 
 function drawExtraRectangles() {
-  noStroke();
-  fill(backgroundRectColor);
+  noStroke(); 
 
+  // Top
+  changeAlpha(120)
   rect(0, -95, 100, 5, 2);
+  changeAlpha(160);
   rect(0, -80, 100, 10, 3);
+  changeAlpha(200);
   rect(0, -60, 100, 20, 5);
+  changeAlpha(240);
   rect(0, -30, 100, 40, 8);
+
+  // Bottom
+  changeAlpha(240);
   rect(0, 230, 100, 40, 8);
+  changeAlpha(200);
   rect(0, 280, 100, 20, 5);
+  changeAlpha(160);
   rect(0, 310, 100, 10, 3);
+  changeAlpha(120);
   rect(0, 330, 100, 5, 2);
+}
+
+function changeAlpha(newAlpha) {
+  backdropRectColor = color(backgroundRectColor)
+  backdropRectColor.setAlpha(newAlpha);
+  fill(backdropRectColor);
 }
 
 function computeCurrentChosenChar(n) {

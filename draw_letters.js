@@ -4,13 +4,22 @@ var systemLineColor = "#264653";
 var systemBoxColor = "#00c800";
 
 // Color constants
-const backgroundRectColor = "#26132E";
-const rectColor  = "#8E00E0";
-const strokeColor  = "#B1D4F0";
-const shadow = "#C528C8";
+var backgroundRectColor = "#26132E";
+var rectColor  = "#8E00E0";
+var strokeColor  = "#B1D4F0";
+var shadow = "#C528C8";
 
 // Gap between lines and filled rectangle
 const rectOffset = 5;
+
+// Sets a new colour theme
+function setTheme(newSystemBackgroundColor, newBackgroundRectColor, newStrokeColor, newShadow, newRectColor) {
+  systemBackgroundColor = newSystemBackgroundColor;
+  backgroundRectColor = newBackgroundRectColor;
+  strokeColor = newStrokeColor;
+  shadow = newShadow;
+  rectColor = newRectColor;
+}
 
 /*
  * Draw the letter given the letterData

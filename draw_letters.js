@@ -12,13 +12,21 @@ var shadow = "#C528C8";
 // Gap between lines and filled rectangle
 const rectOffset = 5;
 
+// Toggle for neon
+var neon = 1;
+
+// Toggle for innerLine
+var inLineWeight = 1;
+
 // Sets a new colour theme
-function setTheme(newSystemBackgroundColor, newBackgroundRectColor, newStrokeColor, newShadow, newRectColor) {
+function setTheme(newSystemBackgroundColor, newBackgroundRectColor, newStrokeColor, newShadow, newRectColor, newNeon, newInLineWeight) {
   systemBackgroundColor = newSystemBackgroundColor;
   backgroundRectColor = newBackgroundRectColor;
   strokeColor = newStrokeColor;
   shadow = newShadow;
   rectColor = newRectColor;
+  neon = newNeon;
+  inLineWeight = newInLineWeight;
 }
 
 /*
@@ -81,8 +89,9 @@ function drawLetter(letterData) {
   line(x3,y3, x4,y4);
   line(x5,y5, x6,y6);
 
+  // Draw inner lines
   stroke('FFFFFF');
-  strokeWeight(1);
+  strokeWeight(inLineWeight);
 
   line(x1,y1, x2,y2);
   line(x3,y3, x4,y4);
@@ -100,7 +109,7 @@ function drawLetter(letterData) {
 
 // Helper function for adding neon effect
 function addNeon() {
-  drawingContext.shadowBlur = 42;
+  drawingContext.shadowBlur = 42 * neon;
   drawingContext.shadowColor = shadow
 }
 
@@ -149,7 +158,7 @@ function drawLinesClockwise(x, y, rectWidth, rectHeight, lineCount) {
 
   // Draw inner lines
   stroke('FFFFFF');
-  strokeWeight(1);
+  strokeWeight(inLineWeight);
 
   // Left
   line(x, y, x, y + rectOffset * 2 + rectHeight);
@@ -192,8 +201,8 @@ function drawLinesCounterClockwise(x, y, rectWidth, rectHeight, lineCount) {
   if (lineCount > 3) line(x, y, x, y + rectOffset * 2 + rectHeight);
 
   // Draw inner lines
-  stroke(shadow);
-  strokeWeight(1);
+  stroke('FFFFFF');
+  strokeWeight(inLineWeight);
 
   // Bottom
   line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);

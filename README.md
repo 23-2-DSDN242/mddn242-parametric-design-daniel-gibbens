@@ -1,6 +1,6 @@
 ## MDDN 242 2023 Assignment 2
 
-For my alphabet design, each of my letters is created in lowercase using three lines and a custom rectangle function. The three lines are controlled by six x, y points using twelve parameters, while the rectangle function is controlled by six parameters. These parameters include the position (x, y), width, height, number of edges to draw, and the drawing order for those edges (either clockwise or counterclockwise). The rectangle function also draws a filled-in rectangle inside the edges. This rectangle is always drawn, but in most cases, it is used to fill an inner region of the letter, such as the inside of 'a' or 'p'. Additionally, each line/edge drawn features a shadow to the lower right. Finally, each letter is drawn over a fixed background of three rounded rectangles with an overlapping region.
+For my alphabet design, each of my letters is created in lowercase using three lines and a custom rectangle function. The three lines are controlled by six x, y points using twelve parameters, while the rectangle function is controlled by six parameters. These parameters include the position (x, y), width, height, number of edges to draw, and the drawing order for those edges (either clockwise or counterclockwise). All of these lines and edges have a shadowBlur effect applied to make them look like neon lights. The rectangle function also draws a filled-in rectangle inside the edges. This rectangle is always drawn, but in most cases, it is used to fill an inner region of the letter, such as the inside of 'a' or 'p'. Additionally, each line/edge drawn features a shadow to the lower right. Finally, each letter is drawn over a fixed background of three rounded rectangles with an overlapping region. It should also be noted that in the exhibition there are additional rectangles that fade into the background as they get further from the glowing letters
 
 By utilising a combination of edges on the rectangle and three lines, my design is capable of recreating all the required letters and numbers in multiple ways.
 
@@ -70,7 +70,7 @@ To solve this, I created a rectangle function that could be turned on or off wit
 ### Part 2: Design the Alphabet
 I wanted to have an incredible amount of flexibility to create all kinds of symbols while still ensuring they remained very legible. Therefore, I decided to continue developing my block lines design. Initially, I felt that the lines alone were too plain, so I introduced a splash of colour by incorporating a filled-in rectangle for the inner regions of the letters. My intention was to create visible spacing between the lines, accentuating the edges of each line. Given the curved nature of the lines, I maintained consistency with the design's mood by curving the inner rectangle as well.
 
-This design was effective until I reached the letter 'f'. Here, I needed five lines without a full rectangle. To accommodate this, I adjusted the rectangle toggle to correlate with the line count. This approach served well until I encountered the number '3'. This character required drawing the edges of the rectangle in a specific order, as the initial line drawn was on the left, needing to remain empty for the '3' shape. To address this, I introduced a parameter to control the sequence of line drawing.
+This design was effective until I reached the letter 'f'. Here, I needed five lines without a full rectangle. To accommodate this, I adjusted the rectangle toggle to correlate with the edge count. This approach served well until I encountered the number '3'. This character required drawing the edges of the rectangle in a specific order, as the initial line drawn was on the left, needing to remain empty for the '3' shape. To address this, I introduced a parameter to control the sequence of line drawing.
 
 I had decided that letters with parts that hang over the "baseline" should extend outside the bounding box. I made this decision because my text is in lowercase, and it would appear incorrect for letters like 'b' and 'p' to start at the same height.
 
@@ -109,9 +109,9 @@ The nineteen parameters at this point are:
 
 While working on interpolation development, handling the interpolation of the three lines was straightforward. I used the map function with percentage and coordinate values to smoothly transition between old and new objects.
 
-However, I encountered challenges with the rectangle drawing function I created. The problem arose because the rectangle's edges were drawn in relation to a single x, y coordinate. This made it difficult to interpolate individual points along the edges, only allowing for the entire rectangle to be smoothly transitioned. Additionally, changing the number of edges led to abrupt animations, where edges suddenly appeared or disappeared, unlike the smooth transitions of the individual lines.
+However, I encountered challenges with the rectangle drawing function. The problem was the rectangle's edges were drawn in relation to a single x, y coordinate. This made it difficult to interpolate individual points along the edges, only allowing for the entire rectangle to be smoothly transitioned. Additionally, changing the number of edges led to abrupt animations, where edges suddenly appeared or disappeared, unlike the smooth transitions of the individual lines.
 
-To solve this, I first tried using lambdas to override the draw function during interpolation. But this approach clashed with the project's guidelines. So, I took an alternate approach. I stored the percentage value and used an if condition while drawing the rectangle. If the percent value was not zero, I used a separate function to smoothly move the edges toward the center of the filled-in rectangle as the percentage reached 50. At 50%, the edges converged and disappeared, coinciding with a change in the number of edges. Then, as the percent value increased from 50 to 100, the new number of edges smoothly moved to their respective positions. This results in the rectangle helping to maintain a consistent letter shape during transitions, while the lines can then build on this, creating interesting variations of the same overall movement.
+To solve this, I first tried using lambdas to override the draw function during interpolation. But this approach clashed with the project's guidelines. So, I took an alternate approach. I stored the percentage value and used an if condition while drawing the rectangle. If the percent value was not zero, I then used a separate function to smoothly move the edges toward the center of the filled-in rectangle as the percentage reached 50. At 50%, the edges converged and disappeared, coinciding with a change in the number of edges. Then, as the percent value increased from 50 to 100, the new number of edges smoothly moved to their respective positions. This results in the rectangle helping to maintain a consistent letter shape during transitions, while the lines can then build on this, creating interesting variations of the same overall movement.
 
 ##### Interpolation when function complete:
 ![interpolation complete](assets/interpolate.png)
@@ -148,4 +148,21 @@ Another experiment I conducted involved attempting to create contrast by drawing
 
 ![linecontrast](assets/linecontrast.png)
 
-Finally I wanted to showcase multiple colour palettes, as I found myself liking more than one. The idea was to change the colours as words were interpolated, effectively enhancing visual variety. However, upon reviewing the template provided, it became clear that this approach was not feasible since this would cause the background to change colour when a single letter changed. So, instead, I enabled manual changes using HTML as well as create a new text colour palette here to showcase my font in a normal colour setting for digital text.
+I then wanted to showcase multiple colour palettes, as I found myself liking more than one. The idea was to change the colours as words were interpolated, effectively enhancing visual variety. However, upon reviewing the template provided, it became clear that this approach was not feasible since this would cause the background to change colour when a single letter changed. So, instead, I enabled manual changes using HTML as well as created a new text colour palette to showcase my font in a normal text environment.
+
+##### Text Design:
+![text](assets/text.png)
+
+My final addition was a neon glow and a thin white line in the very center of each line. This addition provided the final level of detail I was aiming for. The neon effect serves to illuminate each letter in contrast to the background, while the inner line helps create depth for each line, enhancing the 3D effect.
+
+I experimented with different levels of this neon effect. However, due to how I implemented my interpolation method (with unused lines being drawn on top of other lines) and how the neon effect works (multiple lines drawn on top of one another increase the intensity of the effect), it resulted in some lines having a much more pronounced effect than others. This is particularly noticeable with the letter 'l'.
+
+This dilemma led me to decide whether to keep my current design with interesting and distinct interpolations or to avoid drawing all unused lines, ensuring that all lines on a letter have the same level of neon effect. I chose to retain the current interpolations as they are a significant part of my design, and altering them would make the piece appear rather dull. This choice adds a touch of realism, as in the real world, not all lights shine equally, with some lights having a brighter glow than others.
+
+While this addition may not complement the honeypot theme, I chose to retain it in the HTML as it represents the first colour palette iteration. To accommodate this addition, I made adjustments to the current colour theme configurations. This allows me to adjust or remove these elements for both the text and honeypot themes. These configurations are solely intended for showcasing the design in different settings and should not be considered parameters for the design, as they are not included in letter.js.
+
+##### Neon Designs:
+![neonsynth1](assets/neonsynth1.png)
+![neonsynth2](assets/neonsynth2.png)
+![neonsynth3](assets/neonsynth3.png)
+![neontext](assets/neontext.png)

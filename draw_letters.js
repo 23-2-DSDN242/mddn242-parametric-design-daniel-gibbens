@@ -4,10 +4,17 @@ var systemLineColor = "#264653";
 var systemBoxColor = "#00c800";
 
 // Color constants
+// Some need to be vars for editing color theme
 var backgroundRectColor = "#26132E";
 var rectColor  = "#8E00E0";
 var strokeColor  = "#D7EDFF";
 var shadow = "#C528C8";
+const innerLineColor = 'FFFFFF';
+
+// Line weights
+const shadowWeight = 8;
+const strokelineWeight = 6;
+var inLineWeight = 1;
 
 // Gap between lines and filled rectangle
 const rectOffset = 5;
@@ -15,10 +22,7 @@ const rectOffset = 5;
 // Toggle for neon
 var neon = 1;
 
-// Toggle for innerLine
-var inLineWeight = 1;
-
-// Sets a new colour theme
+// Sets a new color theme
 function setTheme(newSystemBackgroundColor, newBackgroundRectColor, newStrokeColor, newShadow, newRectColor, newNeon, newInLineWeight) {
   systemBackgroundColor = newSystemBackgroundColor;
   backgroundRectColor = newBackgroundRectColor;
@@ -69,33 +73,11 @@ function drawLetter(letterData) {
 
   // Draw the filled in rectangle
   fill(rectColor);
-  rect(rectX + rectOffset, rectY + rectOffset, rectWidth,rectHeight,15);
+  rect(rectX + rectOffset, rectY + rectOffset, rectWidth, rectHeight, 15);
 
+  // Draws the non-rectangle lines with their effects
   addNeon();
-
-  // Draw non-rectangle line shadows
-  stroke(shadow);
-  strokeWeight(8);
-  
-  line(x1+1,y1+1, x2+1,y2+1);
-  line(x3+1,y3+1, x4+1,y4+1);
-  line(x5+1,y5+1, x6+1,y6+1);
-
-  // Draw non-rectangle lines
-  stroke(strokeColor);
-  strokeWeight(6);
-  
-  line(x1,y1, x2,y2);
-  line(x3,y3, x4,y4);
-  line(x5,y5, x6,y6);
-
-  // Draw inner lines
-  stroke('FFFFFF');
-  strokeWeight(inLineWeight);
-
-  line(x1,y1, x2,y2);
-  line(x3,y3, x4,y4);
-  line(x5,y5, x6,y6);
+  drawAllNonRectLines(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6);
 
   // Call the letters rectangle method
   if (lineCount > 0) {
@@ -119,99 +101,109 @@ function removeNeon() {
   drawingContext.shadowColor = color(0,0,0,0);
 }
 
+// Calls all the line drawing methods for the non-rectangle lines
+function drawAllNonRectLines(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6) {
+  // Draw line shadows
+  stroke(shadow);
+  strokeWeight(shadowWeight);
+  drawNonRectShadowLines(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6)
+  
+  // Draw lines
+  stroke(strokeColor);
+  strokeWeight(strokelineWeight);
+  drawNonRectLines(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6)
+  
+  // Draw inner lines
+  stroke(innerLineColor);
+  strokeWeight(inLineWeight);
+  drawNonRectLines(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6)
+}
+
+// Draws the non-rectangle lines
+function drawNonRectLines(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6) {
+  line(x1,y1, x2,y2);
+  line(x3,y3, x4,y4);
+  line(x5,y5, x6,y6);
+}
+
+// Draws the non-rectangle shadow lines
+function drawNonRectShadowLines(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6) {
+  line(x1 + 1, y1 + 1, x2 + 1, y2 + 1);
+  line(x3 + 1, y3 + 1, x4 + 1, y4 + 1);
+  line(x5 + 1, y5 + 1, x6 + 1, y6 + 1);
+}
+
 // Helper function for selecting correct rotation
 function drawRect(x, y, rectWidth, rectHeight, lineCount, clockwiseLines) {
   if (clockwiseLines === 1) {
-    drawLinesClockwise(x, y, rectWidth, rectHeight, lineCount);
+    drawAllRectLines(x, y, rectWidth, rectHeight, lineCount, true);
   } else {
-    drawLinesCounterClockwise(x, y, rectWidth, rectHeight, lineCount);
+    drawAllRectLines(x, y, rectWidth, rectHeight, lineCount, false);
   }
 }
 
-// Draws the lines around the rectangle in a clockwise fashion
-function drawLinesClockwise(x, y, rectWidth, rectHeight, lineCount) {
+// Calls all the line drawing methods for the rectangle edges
+function drawAllRectLines(x, y, rectWidth, rectHeight, lineCount, clockwise) {
   // Draw shadow lines
   stroke(shadow);
-  strokeWeight(8);
-
-  // Left
-  line(x+1, y+1, x+1, y + rectOffset * 2 + rectHeight+1);
-  // Top
-  if (lineCount > 1) line(x + rectWidth+1, y+1, x + rectOffset * 2+1, y+1);
-  // Right
-  if (lineCount > 2) line(x + rectOffset * 2 + rectWidth+1, y + rectOffset * 2 + rectHeight+1, x + rectOffset * 2 + rectWidth+1, y+1);
-  // Bottom
-  if (lineCount > 3) line(x + rectOffset * 2+1, y + rectOffset * 2 + rectHeight+1, x + rectWidth+1, y + rectOffset * 2 + rectHeight+1);
+  strokeWeight(shadowWeight);
+  drawShadowRectLines(x, y, rectWidth, rectHeight, lineCount, clockwise)
 
   // Draw lines
   stroke(strokeColor);
-  strokeWeight(6);
-
-  // Left
-  line(x, y, x, y + rectOffset * 2 + rectHeight);
-  // Top
-  if (lineCount > 1) line(x + rectWidth, y, x + rectOffset * 2, y);
-  // Right
-  if (lineCount > 2) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
-  // Bottom
-  if (lineCount > 3) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
+  strokeWeight(strokelineWeight);
+  drawRectLines(x, y, rectWidth, rectHeight, lineCount, clockwise)
 
   // Draw inner lines
-  stroke('FFFFFF');
+  stroke(innerLineColor);
   strokeWeight(inLineWeight);
-
-  // Left
-  line(x, y, x, y + rectOffset * 2 + rectHeight);
-  // Top
-  if (lineCount > 1) line(x + rectWidth, y, x + rectOffset * 2, y);
-  // Right
-  if (lineCount > 2) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
-  // Bottom
-  if (lineCount > 3) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
+  drawRectLines(x, y, rectWidth, rectHeight, lineCount, clockwise)
 }
 
-// Draws the lines around the rectangle in a counterclockwise fashion
-function drawLinesCounterClockwise(x, y, rectWidth, rectHeight, lineCount) {
-  // Draw shadow lines
-  stroke(shadow);
-  strokeWeight(8);
+// Draws the edges on the rectangle
+function drawRectLines(x, y, rectWidth, rectHeight, lineCount, clockwise) {
+  if (clockwise) {
+    // Left
+    line(x, y, x, y + rectOffset * 2 + rectHeight);
+    // Top
+    if (lineCount > 1) line(x + rectWidth, y, x + rectOffset * 2, y);
+    // Right
+    if (lineCount > 2) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
+    // Bottom
+    if (lineCount > 3) line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
+  } else {
+    // Bottom
+    line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
+    // Right
+    if (lineCount > 1) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
+    // Top
+    if (lineCount > 2) line(x + rectWidth, y, x + rectOffset * 2, y);
+    // Left
+    if (lineCount > 3) line(x, y, x, y + rectOffset * 2 + rectHeight);
+  }
+}
 
-  
-  // Bottom
-  line(x + rectOffset * 2 + 1, y + rectOffset * 2 + rectHeight + 1, x + rectWidth + 1, y + rectOffset * 2 + rectHeight + 1);
-  // Right
-  if (lineCount > 1) line(x + rectOffset * 2 + rectWidth + 1, y + rectOffset * 2 + rectHeight + 1, x + rectOffset * 2 + rectWidth + 1, y + 1);
-  // Top
-  if (lineCount > 2) line(x + rectWidth + 1, y + 1, x + rectOffset * 2 + 1, y + 1);
-  // Left
-  if (lineCount > 3) line(x + 1, y + 1, x + 1, y + rectOffset * 2 + rectHeight + 1);
-
-  // Draw lines
-  stroke(strokeColor);
-  strokeWeight(6);
-
-  
-  // Bottom
-  line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
-  // Right
-  if (lineCount > 1) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
-  // Top
-  if (lineCount > 2) line(x + rectWidth, y, x + rectOffset * 2, y);
-  // Left
-  if (lineCount > 3) line(x, y, x, y + rectOffset * 2 + rectHeight);
-
-  // Draw inner lines
-  stroke('FFFFFF');
-  strokeWeight(inLineWeight);
-
-  // Bottom
-  line(x + rectOffset * 2, y + rectOffset * 2 + rectHeight, x + rectWidth, y + rectOffset * 2 + rectHeight);
-  // Right
-  if (lineCount > 1) line(x + rectOffset * 2 + rectWidth, y + rectOffset * 2 + rectHeight, x + rectOffset * 2 + rectWidth, y);
-  // Top
-  if (lineCount > 2) line(x + rectWidth, y, x + rectOffset * 2, y);
-  // Left
-  if (lineCount > 3) line(x, y, x, y + rectOffset * 2 + rectHeight);
+// Draws the shadow edges on the rectangle
+function drawShadowRectLines(x, y, rectWidth, rectHeight, lineCount, clockwise) {
+  if (clockwise) {
+    // Left
+    line(x + 1, y + 1, x + 1, y + rectOffset * 2 + rectHeight + 1);
+    // Top
+    if (lineCount > 1) line(x + rectWidth+1, y + 1, x + rectOffset * 2 + 1, y + 1);
+    // Right
+    if (lineCount > 2) line(x + rectOffset * 2 + rectWidth + 1, y + rectOffset * 2 + rectHeight + 1, x + rectOffset * 2 + rectWidth + 1, y + 1);
+    // Bottom
+    if (lineCount > 3) line(x + rectOffset * 2 + 1, y + rectOffset * 2 + rectHeight + 1, x + rectWidth + 1, y + rectOffset * 2 + rectHeight + 1);
+  } else {
+    // Bottom
+    line(x + rectOffset * 2 + 1, y + rectOffset * 2 + rectHeight + 1, x + rectWidth + 1, y + rectOffset * 2 + rectHeight + 1);
+    // Right
+    if (lineCount > 1) line(x + rectOffset * 2 + rectWidth + 1, y + rectOffset * 2 + rectHeight + 1, x + rectOffset * 2 + rectWidth + 1, y + 1);
+    // Top
+    if (lineCount > 2) line(x + rectWidth + 1, y + 1, x + rectOffset * 2 + 1, y + 1);
+    // Left
+    if (lineCount > 3) line(x + 1, y + 1, x + 1, y + rectOffset * 2 + rectHeight + 1);
+  }
 }
 
 function interpolate_letter(percent, oldObj, newObj) {

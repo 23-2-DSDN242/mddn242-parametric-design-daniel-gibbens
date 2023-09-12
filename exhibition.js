@@ -168,6 +168,7 @@ function drawFromDataObject(x, y, s, obj) {
   pop();
 }
 
+// Draws the fading background rectangles
 function drawExtraRectangles() {
   noStroke(); 
 

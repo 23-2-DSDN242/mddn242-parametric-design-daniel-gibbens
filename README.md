@@ -1,9 +1,13 @@
 ## MDDN 242 2023 Assignment 2
 
+### Synthbox
+**Daniel Gibbens**
+
 For my alphabet design, each of my letters is created in lowercase using three lines and a custom rectangle function. The three lines are controlled by six x, y points using twelve parameters, while the rectangle function is controlled by six parameters. These parameters include the position (x, y), width, height, number of edges to draw, and the drawing order for those edges (either clockwise or counterclockwise). All of these lines and edges have a shadowBlur effect applied to make them look like neon lights. The rectangle function also draws a filled-in rectangle inside the edges. This rectangle is always drawn, but in most cases, it is used to fill an inner region of the letter, such as the inside of 'a' or 'p'. Additionally, each line/edge drawn features a shadow to the lower right. Finally, each letter is drawn over a fixed background of three rounded rectangles with an overlapping region. It should also be noted that in the exhibition there are additional rectangles that fade into the background as they get further from the glowing letters
 
 By utilising a combination of edges on the rectangle and three lines, my design is capable of recreating all the required letters and numbers in multiple ways.
 
+I decided on 'Synthbox' for the name of the font. The 'synth' derives from the colors used in the design, drawing inspiration from the synthwave style. The 'box' is inspired by the geometric design, with letters crafted in a box-like style, with rectangles being the most frequently used shape.
 
 The nineteen parameters per letter:
   * `x1` : the x coordinate of the first point of the first line
@@ -27,7 +31,7 @@ The nineteen parameters per letter:
   * `interpolatePercent` : the percentage of interpolation
 
 ##### Preview:
-![Preview](assets/preview.png)
+![Preview](assets/preview.jpg)
 
 
 ### Part 1: Initial Ideas

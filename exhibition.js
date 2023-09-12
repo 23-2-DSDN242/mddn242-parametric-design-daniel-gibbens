@@ -193,6 +193,7 @@ function drawExtraRectangles() {
   rect(0, 330, 100, 5, 2);
 }
 
+// Edits the alpha value
 function changeAlpha(newAlpha) {
   backdropRectColor = color(backgroundRectColor)
   backdropRectColor.setAlpha(newAlpha);
